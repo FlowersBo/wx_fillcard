@@ -1,0 +1,71 @@
+/* pages/user/meVipcard/useRecord/index.wxss */
+page{
+  width: 100%;
+  background-color: #e9e9e9;
+}
+.useRecordWrap{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.useRecord{
+  width: 95%;
+}
+.recordWrap{
+  width: 100%;
+  padding-bottom: 100rpx;
+  background-color: #fafafa;
+  border-radius: 30rpx;
+  margin-top: 20rpx;
+}
+.record{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+.timerWrap{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.timerWrap_text{
+  font-size: 36rpx;
+  font-weight: 700;
+}
+.timer{
+  font-size: 32rpx;
+}
+.frequency{
+  width: 30%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+  color: rgb(214, 28, 28);
+  font-weight: 700;
+}
+.boxWrap{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box{
+  height: 500rpx;
+  margin-top: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #757575;
+}
+.icon-icon_wuxiaoxi-{
+  font-size: 400rpx;
+}

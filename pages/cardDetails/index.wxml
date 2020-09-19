@@ -1,0 +1,83 @@
+<!--pages/sellCard/cardDetails/index.wxml-->
+<view class="cardDetailsWrap">
+  <view class="cardDetails">
+    <view class="cardListWrap">
+      <view class="cardList">
+        <view class="cards">
+          <view class="cardChild">
+            <view class="shopName">{{cardDetails.merchantName}}</view>
+            <view class="cardChild_particulars">
+              <image class="cardChild_img" src="{{cardDetails.pic}}"></image>
+              <view class="contentWrap">
+                <view class="caedTime">{{cardDetails.memberCardName}}</view>
+                <view wx:if="{{cardDetails.cardType=='0'}}" class="transfer">
+                  <view class="transfer_card">原次数:{{cardDetails.totalCount}}次</view>
+                  <view class="transfer_price">购买价:
+                    <text style="color:#F17841">{{cardDetails.buyPrice}}元</text>
+                  </view>
+                </view>
+                 <view wx:else class="transfer">
+                  <view class="transfer_price">购买价:
+                    <text style="color:#F17841">{{cardDetails.buyPrice}}元</text>
+                  </view>
+                  <view wx:if="{{cardDetails.giveAmount}}" class="transfer_price">赠送金额:
+                    <text style="color:#F17841">{{cardDetails.giveAmount}}元</text>
+                  </view>
+                </view>
+                <view wx:if="{{cardDetails.cardType=='0'}}" class="residueDegreeWrap">
+                  <view class="residueDegree">剩余次数:{{cardDetails.surplusCount}}次</view>
+                </view>
+                <view wx:else class="residueDegreeWrap">
+                  <view class="residueDegree">剩余金额:{{cardDetails.surplusAmount}}元</view>
+                </view>
+                <view  wx:if="{{cardDetails.validity}}" class="periodValidity">有效期:{{cardDetails.validity}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 输入价格 -->
+    <view class="priceWrap">
+      <view class="operationWrap">
+        <input type="digit" placeholder="请输入售卖金额" value="{{commission_value}}" class="inp"  bindinput="commissionValue"></input>
+      </view>
+      <view class="calculate">
+        <view class="section">建议转让价格为\n\n{{cardDetails.assessPrice}}</view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <!-- 模态框 -->
+  <!--button-->
+  <view class="btnss" bindtap="powerDrawer" data-statu="open">提交</view>
+  <!-- <view class="btn" bindtap="commissionFun">计算佣金</view> -->
+  <!--mask-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <!--content-->
+  <!--使用animation属性指定需要执行的动画-->
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+    <!--drawer content-->
+    <view class="drawer_title">确认转卡</view>
+    <view class="drawer_content">
+      <!-- <view class="top grid">
+        <label class="title col-0">转让价</label>
+        <view class="input_base input_h30 col-1">{{commission_value}}元</view>
+      </view>
+      <view class="top grid">
+        <label class="title col-0">服务费</label>
+        <view class="input_base input_h30 col-1">{{commission}}元</view>
+      </view> -->
+      <view class="mask_text">您的会员卡转让价为\n<text class="pirc_text">{{commission_value}}</text>元，转让成功后平台将收取服务费<text class="pirc_text">{{cardSaleFeePlatform}}</text>。</view>
+    </view>
+    <!-- <view class="sellBtnWrap">
+      <view class="sellBtn" bindtap="submitFun">确认转卡</view>
+    </view> -->
+    <view class="btnWrap">
+      <view class="btn_ok" bindtap="powerDrawer" data-statu="close">取消</view>
+      <view class="btn_ok" bindtap="submitFun" data-statu="close">确认</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,140 @@
+/* pages/shopCardList/index.wxss */
+page{
+  width: 100%;
+  background-color: #EEE9E9;
+}
+.cardParticularsWrap{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.swiper-item{
+  width: 100%;
+  height: 500rpx;
+}
+.cardParticulars{
+  width: 97%;
+}
+.slide-image{
+  width: 100%;
+  height: 100%;
+}
+/* 地址 */
+.shopMessage{
+  width: 100%;
+  height: 120rpx;
+  font-size: 28rpx;
+}
+.shopMessage_child{
+  height: 50rpx;
+  line-height: 70rpx;
+  display: flex;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.shopMessageText{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.icon-iconfontxiangxia1copy19{
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+.icon{
+  margin-right: 10rpx;
+  font-size: 32rpx;
+}
+
+/* 卡列表 */
+.cards{
+  width: 100%;
+}
+
+.cardChild{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 220rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 22rpx 5rpx;
+}
+
+.cardChild_img{
+  width: 40%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.contentWrap{
+  width: 58%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  justify-content: space-between;
+  color: #606060;
+}
+/* .shopName{
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: bold;
+  color:rgb(29, 29, 28);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+} */
+
+.caedTime{
+  font-size: 40rpx;
+  color:#F17841;
+  box-sizing: border-box;
+  padding-right: 20rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.priceWrap{
+  width: 100%;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 5rpx;
+}
+.transfer_marketPrice{
+  text-decoration:line-through;
+}
+.transfer_price{
+  color: rgb(233, 78, 6);
+}
+.btnWrap{
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 10rpx;
+  height: 60rpx;
+}
+.periodValidity{
+  font-size: 22rpx;
+  margin-right: 25rpx;
+  line-height: 80rpx;
+}
+.btn{
+  width: 140rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background-color: rgb(233, 9, 9);
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+}

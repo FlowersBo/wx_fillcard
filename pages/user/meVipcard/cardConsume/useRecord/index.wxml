@@ -1,0 +1,21 @@
+<!--pages/user/meVipcard/useRecord/index.wxml-->
+<view class="useRecordWrap">
+  <view class="useRecord">
+    <block wx:if="{{isFang}}">
+      <view class="recordWrap">
+        <view class="record" wx:for="{{verificationList}}" wx:key="id">
+          <view class="timerWrap">
+            <view class="timer">{{item.createdTime}}</view>
+          </view>
+          <view class="frequency">-{{item.writeOffValue}}{{cardType=='0'?'次':'元'}}</view>
+        </view>
+      </view>
+    </block>
+    <view class="boxWrap" wx:else>
+      <view class="box">
+        <icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+        <view>亲亲，暂无核销记录稍后再来吧~</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,129 @@
+<!--pages/faddishDetail/index.wxml-->
+<view class="faddishDetailWrap">
+  <view class="faddishDetail">
+    <swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+      <block wx:for="{{faddishDetail.bannerList}}" wx:key="id">
+        <swiper-item>
+          <image model="aspectFit" src="{{item.photoUrl}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- <view class="header">
+      <image class="bg_ware" src="https://moyv.top/wechat/images/bg_wave.gif"></image>
+    </view> -->
+    <view class="faddishDetail-title">
+      <view class="title-price">
+        <text>￥{{faddishDetail.price}}</text>
+        <text wx:if="{{faddishDetail.marketPrice}}" class="text1">￥{{faddishDetail.marketPrice}}</text>
+      </view>
+      <view class="title-text">
+        <!-- animation="{{animationMiddleHeaderItem}}" -->
+        <image src="/resource/img/bk.png"></image>
+      </view>
+    </view>
+    <view class="faddishDetailContent">
+      <view class="faddishDetailName">{{faddishDetail.productName}}</view>
+      <!-- <view wx:if="{{buyerList}}" class="padding">
+        <view class="cu-avatar-group">
+          <view class="cu-avatar round lg" wx:for="{{buyerList}}" wx:key="index">
+            <image style="width:100%;height:100%; border-radius: 50%;" src="{{item.avatarUrl}}"></image>
+          </view>
+        </view>
+      </view> -->
+      <view wx:if="{{buyerList}}" class="avatarWrap">
+        <view class="avatar-item" wx:for="{{buyerList}}" wx:key="index">
+          <image src="{{item.avatarUrl}}"></image>
+        </view>
+      </view>
+      <!-- <view class="progress-uesr">
+        <view class="user-img">
+          <image src="{{avatarUrl}}"></image>
+        </view>
+      </view> -->
+      <view class="faddishDeta-number">
+        <view>已抢购
+          <text>{{faddishDetail.countSaleShow}}</text>
+        </view>
+        <view wx:if="{{faddishDetail.storeStatus!='1'}}">仅剩
+          <text>{{faddishDetail.store}}</text>
+        </view>
+      </view>
+      <view wx:if="{{isShow}}" class="progress-box">
+        <progress class="pro" percent="{{percent}}" duration="20" stroke-width="10" border-radius='4' color="#FA4743" active/>
+      </view>
+    </view>
+    <!-- 商家信息 -->
+    <view class="merchantMessage">
+      <view class="shopImg">
+        <image mode="aspectFill" src="{{faddishDetail.logo}}"></image>
+      </view>
+      <view class="shopMessage">
+        <view class="shopMessage_child">
+          <icon class="iconfont icon icon-icon-test"></icon>
+          <view class="shopMessageText">{{faddishDetail.merchantName}}</view>
+        </view>
+        <view class="shopMessage_child" data-mobile="{{faddishDetail.serviceTel}}" bindtap="calling">
+          <icon class="iconfont icon icon-dianhua"></icon>
+          <view>{{faddishDetail.serviceTel}}</view>
+          <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+        </view>
+        <view class="shopMessage_child" bindtap="gotuMap">
+          <icon class="iconfont icon icon-dizhi"></icon>
+          <view class="shopMessageText">{{faddishDetail.address}}</view>
+          <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+        </view>
+      </view>
+    </view>
+
+    <view class="explain" wx:if="{{faddishDetail.usageRule}}">
+      <view class="explain-header">
+        <icon class="iconfont icon-header icon-xuzhi"></icon>
+        <text>购买须知</text>
+      </view>
+      <view class="explain-content">
+        <!--pages/cx/index.wxml-->
+        <import src="../../wxParse/wxParse.wxml" />
+        <!-- 这里data中article为bindName -->
+        <template is="wxParse" data="{{wxParseData:usageRule.nodes}}" />
+      </view>
+    </view>
+
+    <view class="explain" wx:if="{{faddishDetail.detailDesc}}">
+      <view class="explain-header">
+        <icon class="iconfont icon-header icon-xiangqing"></icon>
+        <text>商品详情</text>
+      </view>
+      <view class="explain-content">
+        <!--pages/cx/index.wxml-->
+        <import src="../../wxParse/wxParse.wxml" />
+        <!-- 这里data中article为bindName -->
+        <template is="wxParse" data="{{wxParseData:detailDesc.nodes}}" />
+      </view>
+    </view>
+
+    <view class="faddishWrap">
+      <view class="explain-header">
+        <icon class="iconfont icon-header icon-tuijian"></icon>
+        <text>爆款推荐</text>
+      </view>
+      <view class="cardList">
+        <view class="cards">
+          <view class="card-item" style="width:{{screenWidth/2}}px; height:{{screenWidth/2*1.5}}px;" wx:for="{{faddish}}" wx:key="index">
+            <view class="item" data-productId="{{item.productId}}" bindtap="faddishDetailFun">
+              <image class="card-img" mode="aspectFill" style="height:{{screenWidth/2-7}}px;" src="{{item.pic}}"></image>
+              <view style="height:{{screenWidth/2*1.5-screenWidth/2}}px;" class="card-content">
+                <view class="card-title">{{item.productName}}</view>
+                <view class="card-price">
+                  <text>￥{{item.price}}</text>
+                  <text>￥{{item.marketPrice}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="faddishBtn {{isBtn}}" data-forbid="{{forbid}}" bindtap="gotoPayment">{{btnName}}</view>
+</view>

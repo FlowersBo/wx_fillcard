@@ -1,0 +1,38 @@
+<!--pages/respirator/orderform/index.wxml-->
+<view class="orderformWrap">
+  <block wx:if="{{orderformList.length>0}}">
+    <view class="orderformList" wx:for="{{orderformList}}" wx:key="id">
+      <view class="orderform_top">
+        <view class="iconWrap">
+          <icon class="iconfont icon-xiazai"></icon>
+        </view>
+        <view class="addressWrap">
+          <view class="message">
+            <view class="name">{{item.linkUserName}}</view>
+            <view class="phone">{{item.linkTelephone}}</view>
+          </view>
+          <view class="address">{{item.linkAddress}}</view>
+        </view>
+      </view>
+      <view class="orderform_bottom">
+        <view class="item">
+          <view>实付款</view>
+          <view style="color:#FD0000;font-size:40rpx;">￥{{item.amount}}</view>
+        </view>
+        <view class="item">
+          <view>数量</view>
+          <view>x{{item.productCount}}</view>
+        </view>
+        <view class="item">
+          <view>时间</view>
+          <view>{{item.createdTime}}</view>
+        </view>
+        <view class="item">
+          <view></view>
+          <view class="status">{{item.status}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="mask" wx:else>您当前暂无订单</view>
+</view>

@@ -1,0 +1,53 @@
+<!--pages/bargainirg/index.wxml-->
+<view class="sellCardWrap">
+	<view class="sellCard">
+		<!-- 轮播 -->
+		<view class="swiperWrap">
+			<swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+				<block wx:for="{{merchant.bannerList}}" wx:key="id">
+					<swiper-item>
+						<image model="aspectFit" src="{{item.photoUrl}}" class="slide-image" />
+					</swiper-item>
+				</block>
+			</swiper>
+			<!-- <view class="photoAlbum" bindtap="gotophotoAlbum">
+				<icon class="iconfont icon-tupian"></icon>
+				<text class="photoAlbumText">{{merchant.photoCount}}</text>
+			</view> -->
+		</view>
+		<!-- 商家信息 -->
+		<view class="merchantMessage">
+			<view class="shopImg">
+				<image mode="aspectFill" src="{{merchant.logo}}"></image>
+			</view>
+			<view class="shopMessage">
+				<view class="shopMessage_child">
+					<icon class="iconfont icon icon-icon-test"></icon>
+					<view class="shopMessageText">{{merchant.merchantName}}</view>
+				</view>
+				<view class="shopMessage_child" data-mobile="{{merchant.serviceTel}}" bindtap="calling">
+					<icon class="iconfont icon icon-dianhua"></icon>
+					<view class="shopMessageText">{{merchant.serviceTel}}</view>
+					<icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+				</view>
+				<view class="shopMessage_child" bindtap="gotuMap">
+					<icon class="iconfont icon icon-dizhi"></icon>
+					<view class="shopMessageText">{{merchant.address}}</view>
+					<icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+				</view>
+			</view>
+		</view>
+		<!-- 说明 -->
+		<view class="explain">
+			<view class="explain_title">
+				<icon class="iconfont icon-xuzhi1"></icon>
+				<text>使用说明</text>
+			</view>
+			<import src="../../wxParse/wxParse.wxml" />
+			<!-- 这里data中article为bindName -->
+			<template class="wxParse" is="wxParse" data="{{wxParseData:article.nodes}}" />
+		</view>
+    <button wx:if="{{cutPriceId}}" class="btn" open-type='share' bindtap="shareFun">分享给好友砍价吧</button>
+
+	</view>
+</view>

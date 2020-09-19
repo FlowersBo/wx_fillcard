@@ -1,0 +1,63 @@
+<!--pages/faddishCardList/index.wxml-->
+<view class="cardListWrap">
+	<block wx:if="{{isFang}}">
+		<view class="searchWrap">
+			<navigator url="/pages/search/index" class="search">
+				<view class="search_inp">请输入关键词</view>
+				<icon class="iconfont icon-fangdajing"></icon>
+			</navigator>
+		</view>
+
+		<!-- 爆款 -->
+		<view class="cardList">
+			<view class="cards">
+				<view class="card-item" style="width:{{screenWidth/2}}px; height:{{screenWidth/2*1.5}}px;" wx:for="{{faddish}}" wx:key="index">
+					<view class="item" data-productId="{{item.productId}}" bindtap="faddishDetailFun">
+						<image class="card-img" mode="aspectFill" style="height:{{screenWidth/2-7}}px;" src="{{item.pic}}"></image>
+						<view style="height:{{screenWidth/2*1.5-screenWidth/2}}px;" class="card-content">
+							<view class="card-title">{{item.productName}}</view>
+							<view class="card-price">
+								<text>￥{{item.price}}</text>
+								<text>￥{{item.marketPrice}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<!-- 一手卡 -->
+		<view wx:if="{{firstCard.length > 0}}" class="cardListWrap">
+			<view class="cardLists">
+				<view class="cardTitle">
+					<icon class="iconfont icon icon-xuzhi1"></icon>
+					<view class="title">商家会员卡信息</view>
+				</view>
+				<block wx:for="{{firstCard}}" wx:key="id">
+					<view class="cardsss"  data-merchantId='{{item.merchantId}}' data-merchantName="{{item.merchantName}}" bindtap="shonCardDetails">
+						<!-- <view class="shopNamess">{{item.merchantName}}</view> -->
+						<view class="cardChildss">
+							<image class="cardChild_imgss" src="{{item.pic}}" mode="aspectFit"></image>
+							<view class="contentWrapss">
+								<view class="caedTimess">{{item.productName}}</view>
+								<view class="priceWrap">
+									<view class="transfer_pricess marketPrice" wx:if="{{item.marketPrice}}">原价:{{item.marketPrice}}元</view>
+									<view class="transfer_pricess">现价:{{item.price}}元</view>
+								</view>
+								<view class="periodValidityss" wx:if="{{item.validityNumDesc}}">{{item.validityNumDesc}}</view>
+								<view class="periodValidityss" wx:else></view>
+								<view class="btnss"  data-merchantId='{{item.merchantId}}' data-merchantName="{{item.merchantName}}" catchtap="shonCardDetails">查看详情</view>
+							</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</block>
+	<view class="boxWrap" wx:else>
+		<view class="box">
+			<icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+			<view>亲亲，暂无爆款商品稍后再来吧~</view>
+		</view>
+	</view>
+</view>

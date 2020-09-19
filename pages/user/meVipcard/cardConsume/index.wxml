@@ -1,0 +1,60 @@
+<!--pages/user/meVipcard/cardConsume/index.wxml-->
+<view class="cardConsumeWrap">
+	<view class="cardConsume">
+		<view class="card" data-memberCardId="{{cardDetails.memberCardId}}" bindtap="gotoUseRecord">
+			<view class="card_top">{{cardDetails.merchantName}}</view>
+			<view class="card_center">
+				<image class="card_img" src="/resource/images/typeface/vipcard.jpg"></image>
+				<view class="card_content">
+					<view class="card_content_top">{{cardDetails.memberCardName}}</view>
+					<view class="iconfontWrap">
+						<view wx:if="{{cardDetails.cardType=='0'}}" class="card_content_centent">剩余{{cardDetails.surplusCount}}次</view>
+						<view wx:else class="card_content_centent">剩余{{cardDetails.surplusAmount}}元</view>
+						<icon class="iconfont icon-iconfontxiangxia1copy19"></icon>
+					</view>
+					<view class="card_content_bottom">
+						<view class="refund" catchtap="refundClick" data-statu="open" data-status="{{status}}">{{refundText}}</view>
+						<view wx:if="{{cardDetails.validity}}">有效期至:{{cardDetails.validity}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="ewm">
+			<view class="img">
+				<image src="{{cardDetails.mpCode}}"></image>
+			</view>
+			<view class="ewm-code">卡号:{{cardDetails.memberCardNO}}</view>
+		</view>
+
+		<!-- wx:if="{{faddishDetail.usageRule}}" -->
+		<view class="explain">
+			<view class="explain-header">
+				<icon class="iconfont icon-header icon-xuzhi"></icon>
+				<text>使用须知</text>
+			</view>
+			<view class="explain-content">
+				<!--pages/cx/index.wxml-->
+				<import src="../../../../wxParse/wxParse.wxml" />
+				<!-- 这里data中article为bindName -->
+				<template is="wxParse" data="{{wxParseData:usageRule.nodes}}" />
+			</view>
+		</view>
+
+		<!--mask-->
+		<view class="drawer_screen" bindtap="cancelClick" data-statu="close" wx:if="{{showModalStatus}}"></view>
+		<!--content-->
+		<!--使用animation属性指定需要执行的动画-->
+		<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+			<!--drawer content-->
+			<view class="drawer_title">退卡提示</view>
+			<view class="drawer_content">
+        {{refundDesc}}
+			</view>
+			<view class="btnWrap">
+				<view class="btn_ok" bindtap="cancelClick" data-statu="close">取消</view>
+				<view class="btn_ok" bindtap="submitFun" data-statu="close">确认</view>
+			</view>
+		</view>
+
+	</view>
+</view>

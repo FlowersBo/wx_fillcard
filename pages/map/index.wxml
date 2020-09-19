@@ -1,0 +1,4 @@
+<!--pages/map/index.wxml-->
+<view class="mapWrap" style="height: {{ktxScreentHeight}}rpx;">
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}"  markers="{{markers}}" style="width: 100%; height: 100%;"></map>
+</view>

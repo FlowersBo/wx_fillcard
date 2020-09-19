@@ -1,0 +1,18 @@
+<!--pages/photoAlbum/index.wxml-->
+<view class="photoAlbumWrap">
+	<view class="photoAlbum">
+		<block wx:if="{{isFang}}">
+			<view class="itemWrap">
+				<view class="item" style="width:{{screenWidth/3}}px;" wx:for="{{uploadPics}}" wx:key="index">
+					<image style="height:{{screenWidth/3/1.4}}px;" src="{{item.photoUrl}}" data-src="{{item.photoUrl}}" bindtap="previewImage" mode="aspectFill" />
+				</view>
+			</view>
+		</block>
+		<view class="boxWrap" wx:else>
+			<view class="box">
+				<icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+				<view>亲亲，暂无图片稍后再来吧~</view>
+			</view>
+		</view>
+	</view>
+</view>

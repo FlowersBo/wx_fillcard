@@ -1,0 +1,68 @@
+<!--pages/shopCardList/shopCardDetails/index.wxml-->
+<view class="modificationCardWrap">
+  <view class="modificationCard">
+    <view class="cardMessageWrap">
+      <view class="cardMessage">
+        <view class="cardMessageHeader">{{details.productName}}</view>
+        <swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+          <block wx:for="{{details.bannerList}}" wx:key="id">
+            <swiper-item>
+              <image model="aspectFit" src="{{item.photoUrl}}" class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <!-- <view class="cardMessage_img">
+          <image class="imag" src="{{details.pic}}"></image>
+        </view> -->
+        <view class="message_header">
+          <view class="box"></view>
+          <text class="message_header_text">卡的基本信息</text>
+        </view>
+        <view class="message">
+          <view class="message_child">
+            <view class="message_child_start">购买价</view>
+            <view class="child_start">{{details.price}}元</view>
+          </view>
+          <view wx:if="{{details.cardType=='0'}}" class="message_child">
+            <view class="message_child_start">总次数</view>
+            <view class="child_start">{{details.totalCount}}次</view>
+          </view>
+          <view wx:else class="message_child">
+            <view class="message_child_start">赠送金额</view>
+            <view class="child_start">{{details.giveAmount}}元</view>
+          </view>
+          <view wx:if="{{details.validityNum}}" class="message_child">
+            <view class="message_child_start">有效期</view>
+            <view class="child_start">{{details.validityNum}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 地址 电话 -->
+    <view class="shopMessage">
+      <view class="shopMessage_child" bindtap="gotuMap">
+        <icon class="iconfont icon icon-dizhi"></icon>
+        <view class="shopMessageText">{{details.address}}</view>
+        <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+      </view>
+      <view class="shopMessage_child" bindtap="calling" data-mobile="{{details.serviceTel}}">
+        <icon class="iconfont icon icon-dianhua"></icon>
+        <view>{{details.serviceTel}}</view>
+        <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+      </view>
+    </view>
+    <view class="notice">
+      <view class="message_header">
+        <view class="box"></view>
+        <text class="message_header_text">使用须知</text>
+      </view>
+      <view class="notice_content">
+        <!--pages/cx/index.wxml-->
+        <import src="../../../wxParse/wxParse.wxml" />
+        <!-- 这里data中article为bindName -->
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+    <button class="price_btn" bindtap="gotoPayment">立即购买</button>
+  </view>
+</view>

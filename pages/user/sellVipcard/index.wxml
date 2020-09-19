@@ -1,0 +1,44 @@
+<!--pages/user/sellVipcard/index.wxml-->
+<view class="sellVipcardWrap">
+  <view class="sellVipcard">
+    <view class="cardListWrap"  wx:if="{{isFang}}">
+      <view class="cardList">
+       <view class="cards" wx:for="{{cardList}}" wx:key="id">
+          <view class="cardChild">
+            <view class="shopNameWrap">
+              <view class="shopName">{{item.merchantName}}</view>
+              <view class="shopstate">{{item.statusDesc}}</view>
+            </view>
+            <view class="cardChild_particulars">
+              <image class="cardChild_img" src="{{item.pic}}"></image>
+              <view class="contentWrap">
+                <view class="caedTime">{{item.memberCardName}}</view>
+                <view class="transfer">
+                  <view wx:if="{{item.cardType=='0'}}" class="transfer_card">购买次数:{{item.totalCount}}次</view>
+                  <view class="transfer_price">购买价:<text style="color:#F17841">{{item.buyPrice}}元</text></view>
+                </view>
+                <view class="transfer">
+                  <view wx:if="{{item.cardType=='0'}}" class="residueDegree">剩余次数:{{item.surplusCount}}次</view>
+                  <view class="transfer_price">售卖价:{{item.salePrice}}元</view>
+                </view>
+                <view  wx:if="{{item.validity}}" class="periodValidity">有效期:{{item.validity}}</view>
+                <view class="btn_wrap">
+                  <view wx:if="{{item.status!='4'}}" class="sellCardBtn" id="{{item.memberCardId}}" bindtap="cancelOrder">不卖了</view>
+                  <view wx:if="{{item.status!='4'}}" class="sellCardBtn" id="{{item.memberCardId}}" bindtap="sellCardDetails">修改售价</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="boxWrap" wx:else>
+      <view class="box">
+        <icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+        <view>亲亲，暂无在售会员卡稍后再来吧~</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+

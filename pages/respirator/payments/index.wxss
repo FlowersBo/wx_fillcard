@@ -1,0 +1,159 @@
+/* pages/respirator/payment/index.wxss */
+
+page {
+  width: 100%;
+  background-color: #ebebeb;
+}
+
+.payment {
+  width: 100%;
+}
+
+.payment_money {
+  width: 100%;
+  height: 140rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: #fff;
+}
+
+.iconWrap {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #f0c44b;
+  line-height: 100rpx;
+  text-align: center;
+  margin: 0 20rpx;
+}
+
+.icon-dingdanjine-xian {
+  font-size: 60rpx;
+  color: #fff;
+}
+
+.stepperWraps{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 10rpx;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+.stepperMoney{
+  font-size: 36rpx;
+  color: #545454;
+}
+.stepperWrap{
+  width: 100%;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.amount{
+  font-size: 36rpx;
+  color: #545454;
+}
+.money{
+  margin-left: 100rpx;
+}
+.money_text{
+  font-size: 80rpx;
+  color: #FB0018;
+  font-weight: bold;
+}
+/*主容器*/  
+.stepper {
+  width: 200rpx;
+  height: 60rpx;
+  /*给主容器设一个边框*/
+  border: 1px solid #ccc;
+  border-radius: 6rpx;
+}
+
+/*加号和减号*/
+.stepper text {
+  width: 50rpx;
+  height: 100%;
+  line-height: 60rpx;
+  text-align: center;
+  float: left;
+}
+
+/*数值*/
+.stepper input {
+  width: 94rpx;
+  height: 100%;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 28rpx;
+  /*给中间的input设置左右边框即可*/
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/*普通样式*/
+.stepper .normal {
+  color: black;
+}
+
+/*禁用样式*/
+.stepper .disabled {
+  color: #ccc;
+}
+.placeReceipt{
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+  margin: 10rpx 0;
+}
+.icon-iconfontxiangxia1copy19{
+  margin-top: -10rpx;
+}
+/* textarea输入 */
+.inputWrap{
+  width: 100%;
+  height: 300rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.areas{
+  width: 94%;
+  height: 86%;
+  color: #888888;
+  font-size: 28rpx;
+}
+.placeholderStyle{
+  color:#aaa;
+  font-size:32rpx;
+}
+/* 表单提交 */
+.fromBtnWrap{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fromBtn{
+  width: 94%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 40rpx;
+  background-color: #154F53;
+  color: #fff;
+}

@@ -1,0 +1,36 @@
+<!--pages/respirator/payment/index.wxml-->
+<view class="payment">
+  <view class="payment_money">
+    <view class="iconWrap">
+      <icon class="iconfont icon-dingdanjine-xian"></icon>
+    </view>
+    <view>订单金额确认</view>
+  </view>
+  <view class="stepperWraps">
+    <view class="stepperMoney">订单金额</view>
+    <view class="stepperWrap">
+      <view class="amount">数量：</view>
+      <view class="stepper">
+        <!-- 减号 -->
+        <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+        <!-- 数值 -->
+        <input type="number" bindblur="bindManual" value="{{sNum}}" />
+        <!-- 加号 -->
+        <text class="normal" bindtap="bindPlus">+</text>
+      </view>
+      <view class="money">
+        <text class="money_text">{{money}}</text> 元</view>
+    </view>
+  </view>
+  <view class="placeReceipt" bindtap="address">
+    <text>收货信息</text>
+    <icon class="iconfont icon-iconfontxiangxia1copy19"></icon>
+  </view>
+  <view class='inputWrap'>
+    <textarea class="areas" placeholder='请在这里输入给卖家的留言~' placeholder-class="placeholderStyle" name="placeholder" maxlength="100" value='{{cursorValue}}' bindinput="inputs">
+    </textarea>
+  </view>
+  <view class="fromBtnWrap">
+    <button class="fromBtn" disabled='{{disabledBtn}}' bindtap="paymentFun">去付款</button>
+  </view>
+</view>

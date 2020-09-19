@@ -1,0 +1,35 @@
+<!--pages/generalize/index.wxml-->
+<view class="generalizeWrap">
+  <view class="generalize">
+    <block wx:if="{{isFang}}">
+      <view class="cardList" wx:for="{{records}}" data-productId="{{item.productId}}" wx:key="index" bindtap="generalizeDetails">
+        <view class="cardWrap">
+          <view class="card_img">
+            <image class="img" mode="aspectFill" src="{{item.pic}}" />
+          </view>
+          <view class="card_details">
+            <view class="card_name">{{item.productName}}</view>
+            <view class="piceWrap">
+              <view class="pice">原价:
+                <text class="money">{{item.price}}元</text>
+              </view>
+              <view class="pice">售卖价:
+                <text class="money">{{item.spreadPrice}}元</text>
+              </view>
+            </view>
+            <view class="pice">提成:
+              <text class="money">{{item.spreadCommission}}元</text>
+            </view>
+          </view>
+        </view>
+        <view class="address">{{item.merchantName}}</view>
+      </view>
+    </block>
+    <view class="boxWrap" wx:else>
+      <view class="box">
+        <icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+        <view>亲亲，暂无会员卡稍后再来吧~</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<!--pages/respirator/payments/address/index.wxml-->
+<view class="addressWrap">
+  <view class="address">
+    <form bindsubmit="formSubmit">
+      <view class="inputWrap">
+        <text class="text names">收货人</text>
+        <input class="inp" name="names" placeholder="姓名" placeholder-style="color:#bbb;" type="text" maxlength="7" />
+      </view>
+      <view class="inputWrap">
+        <text class="text">手机号码</text>
+        <input class="inp" name="mobile" placeholder="11位手机号" placeholder-style="color:#bbb;" type="number" maxlength="11" />
+      </view>
+      <view class="inputWrap">
+        <text class="text">地区信息</text>
+        <!-- <input class="inp" name="region" placeholder="地区信息" placeholder-style="color:#bbb;" type="text" maxlength="-1" /> -->
+        <view class="picker" >
+          <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view>
+              {{region[0]}}，{{region[1]}}，{{region[2]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="inputWrap">
+        <text class="text">详细地址</text>
+        <input class="inp" name="address" placeholder="街道门牌信息" placeholder-style="color:#bbb;" type="text" maxlength="-1" />
+      </view>
+      <button class="btn" formType="submit">保存</button>
+    </form>
+  </view>
+  <!-- <button open-type="share" data-index="1">分享</button> -->
+</view>

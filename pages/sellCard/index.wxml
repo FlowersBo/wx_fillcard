@@ -1,0 +1,46 @@
+<!--pages/index/sellCard/index.wxml-->
+<view class="sellCardWrap">
+  <view class="sellCard">
+    <view class="cardList_head">
+      <view class="cardList_headText"></view>
+      <text>我的卡</text>
+    </view>
+    <block wx:if="{{isFang}}">
+      <view class="cardListWrap">
+        <view class="cardList">
+          <view class="cards" wx:for="{{cardList}}" wx:key="id">
+            <view class="cardChild">
+              <view class="shopName">{{item.merchantName}}</view>
+              <view class="cardChild_particulars">
+                <image class="cardChild_img" src="{{item.pic}}"  mode="aspectFill"></image>
+                <view class="contentWrap">
+                  <view class="caedTime">{{item.productName}}</view>
+                  <view class="transfer" wx:if="{{item.cardType=='0'}}">
+                    <view class="transfer_card">原次数:{{item.totalCount}}次</view>
+                    <view class="transfer_price">购买价:
+                      <text style="color:#F17841">{{item.buyPrice}}元</text>
+                    </view>
+                  </view>
+                  <view wx:else class="surplusAmount">剩余：<text style="color:#F17841">{{item.surplusAmount}}元</text></view>
+                  <view class="btn_wrap">
+                    <view class="residueDegreeWrap">
+                      <view wx:if="{{item.cardType=='0'}}" class="residueDegree">剩余次数:{{item.surplusCount}}次</view>
+                      <view wx:if="{{item.validity}}" class="periodValidity">有效期:{{item.validity}}</view>
+                    </view>
+                    <view class="sellCardBtn" id="{{item.memberCardId}}" bindtap="sellCardDetails">我要转卡</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="boxWrap" wx:else>
+      <view class="box">
+        <icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+        <view>亲亲，暂无会员卡稍后再来吧~</view>
+      </view>
+    </view>
+  </view>
+</view>

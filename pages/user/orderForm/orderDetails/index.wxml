@@ -1,0 +1,63 @@
+<!--pages/user/orderForm/orderDetails/index.wxml-->
+<view class="faddishDetailWrap">
+  <view class="faddishDetail">
+    <swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+      <!-- <block wx:for="{{proList.pic}}" wx:key="id"> -->
+      <swiper-item>
+        <image model="aspectFit" src="{{proList.pic}}" class="slide-image" />
+      </swiper-item>
+      <!-- </block> -->
+    </swiper>
+
+    <view class="faddishDetail-title">
+      <view class="title-price">
+        <text>￥{{proList.amountTotal}}</text>
+        <!-- <text wx:if="{{faddishDetail.marketPrice}}" class="text1">￥{{faddishDetail.marketPrice}}</text> -->
+      </view>
+      <view class="title-text">
+        <image src="/resource/img/bk.png"></image>
+      </view>
+    </view>
+
+    <view class="faddishDetailContent">
+      <view class="faddishDetailName">{{faddishDetail.productName}}</view>
+    </view>
+
+    <!-- 商家信息 -->
+    <view class="merchantMessage">
+      <view class="shopImg">
+        <image mode="aspectFill" src="{{merchantInfo.logo}}"></image>
+      </view>
+      <view class="shopMessage">
+        <view class="shopMessage_child">
+          <icon class="iconfont icon icon-icon-test"></icon>
+          <view class="shopMessageText">{{merchantInfo.merchantName}}</view>
+        </view>
+        <view class="shopMessage_child" data-mobile="{{merchantInfo.serviceTel}}" bindtap="calling">
+          <icon class="iconfont icon icon-dianhua"></icon>
+          <view>{{merchantInfo.serviceTel}}</view>
+          <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+        </view>
+        <view class="shopMessage_child" bindtap="gotuMap">
+          <icon class="iconfont icon icon-dizhi"></icon>
+          <view class="shopMessageText">{{merchantInfo.addressFull}}</view>
+          <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+        </view>
+      </view>
+    </view>
+
+    <view class="explain" wx:if="{{proList.usageRule}}">
+      <view class="explain-header">
+        <icon class="iconfont icon-header icon-xuzhi"></icon>
+        <text>使用须知</text>
+      </view>
+      <view class="explain-content">
+        <!--pages/cx/index.wxml-->
+        <import src="../../../../wxParse/wxParse.wxml" />
+        <!-- 这里data中article为bindName -->
+        <template is="wxParse" data="{{wxParseData:usageRule.nodes}}" />
+      </view>
+    </view>
+  </view>
+  <view class="faddishBtn {{isBtn}}" data-forbid="{{forbid}}" bindtap="cancelAfterVerification">{{cancelCode}}</view>
+</view>

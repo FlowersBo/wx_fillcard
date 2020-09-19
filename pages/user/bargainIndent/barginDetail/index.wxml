@@ -1,0 +1,96 @@
+<!--pages/user/bargainIndent/barginDetail/index.wxml-->
+<view class="sellCardWrap">
+	<view class="sellCard">
+		<view wx:if="{{currentTab==='2'}}" class="shade">
+			<view>已核销/已过期</view>
+		</view>
+		<block>
+			<!-- 轮播 -->
+			<view wx:if="{{currentTab==='0'||currentTab==='2'}}" class="swiperWrap">
+				<swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+					<block>
+						<swiper-item>
+							<image model="aspectFit" src="{{merchant.pic}}" class="slide-image" />
+						</swiper-item>
+					</block>
+				</swiper>
+				<!-- <view class="photoAlbum" catchtap="gotophotoAlbum">
+					<icon class="iconfont icon-tupian"></icon>
+					<text class="photoAlbumText">{{merchant.photoCount}}</text>
+				</view> -->
+			</view>
+			<view wx:else class="vsCode">
+				<view class="vsCodeImg">
+					<image src="{{merchant.qrCode}}"></image>
+				</view>
+				<view class="vsCodeText">核销二维码</view>
+			</view>
+		</block>
+		<!-- 商家信息 -->
+		<view class="merchantMessage">
+			<view class="shopImg">
+				<image mode="aspectFill" src="{{merchantInfo.logo}}"></image>
+			</view>
+			<view class="shopMessage">
+				<view class="shopMessage_child">
+					<icon class="iconfont icon icon-icon-test"></icon>
+					<view class="shopMessageText">{{merchantInfo.merchantName}}</view>
+				</view>
+				<view class="shopMessage_child" data-mobile="{{merchantInfo.serviceTel}}" bindtap="calling">
+					<icon class="iconfont icon icon-dianhua"></icon>
+					<view class="shopMessageText">{{merchantInfo.serviceTel}}</view>
+					<icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+				</view>
+				<view class="shopMessage_child" bindtap="gotuMap">
+					<icon class="iconfont icon icon-dizhi"></icon>
+					<view class="shopMessageText">{{merchantInfo.addressFull}}</view>
+					<icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+				</view>
+			</view>
+		</view>
+		<!-- 砍价详情 -->
+		<view class="priceDetail">
+			<view class="priceDetail_item">
+				<view>原价：￥<text class="price_text">{{merchant.productAmount}}元</text></view>
+				<view>当前价：￥<text class="price_text">{{merchant.surplusAmount}}元</text></view>
+			</view>
+			<view class="priceDetail_item">
+				<view>砍价人数：{{merchant.cutCount}}人</view>
+				<view>有效期：{{merchant.validity}}</view>
+			</view>
+		</view>
+		<!-- 说明 -->
+		<view class="explain">
+			<view class="explain_title">
+				<icon class="iconfont icon-xuzhi1"></icon>
+				<text>{{currentTab==='0'?'砍价说明':'使用说明'}}</text>
+			</view>
+			<import src="../../../../wxParse/wxParse.wxml" />
+			<!-- 这里data中article为bindName -->
+			<template class="wxParse" is="wxParse" data="{{wxParseData:article.nodes}}" />
+		</view>
+		<!-- 分享 -->
+		<view wx:if="{{currentTab==='0'}}" class="btnWrap">
+			<view class="btn_price" bindtap="gotoPayment">
+				<view> <text class="btn_price_text">{{merchant.surplusAmount}}</text> 元</view>
+				<view>不砍了直接购买</view>
+			</view>
+			<button class="btn" open-type='share'>继续分享砍价</button>
+		</view>
+		<!-- 砍价人 -->
+		<view wx:else class="explain">
+			<view class="explain_title">
+				<icon class="iconfont icon-xuzhi1"></icon>
+				<text>砍价人</text>
+			</view>
+			<view class="explainPerson">
+				<block wx:for="{{relatives}}" wx:key="index">
+					<view class="person">
+						<view>{{item.accountName}}</view>
+						<view>{{item.createdTime}}</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</view>
+</view>

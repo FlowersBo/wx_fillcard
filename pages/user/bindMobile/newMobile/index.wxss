@@ -1,0 +1,62 @@
+/* pages/user/bindMobile/newMobile/index.wxss */
+page{
+  width: 100%;
+  background-color: #f2f2f2;
+}
+.newMobileWrap{
+  width: 100%;
+}
+.newMobile{
+  width: 100%;
+}
+.inp{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  font-size: 32rpx;
+  background-color: #fff; 
+  margin: 30rpx 0;
+}
+.verificationWrap{
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+.codeInp{
+  width: 300rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #DFDFDF;
+  border-radius: 15rpx;
+  font-size: 32rpx;
+  margin-left: 30rpx;
+  text-align: center;
+}
+.verification{
+  margin-left: 20rpx;
+  width: 220rpx;
+  height: 80rpx;
+  background-color: #FDE50D;
+  border-radius: 10rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.btnWrap{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.code_btn{
+  width: 260rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 80rpx;
+  background-color: rgb(199, 68, 7);
+  color: #fff;
+}

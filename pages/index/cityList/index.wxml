@@ -1,0 +1,8 @@
+<!--pages/index/cityList/index.wxml-->
+<view class="cityListWrap">
+  <view class="cityList">
+    <view class="city_item {{index % 2 == 0?'categ':'categ1'}}" wx:for="{{cityList}}" wx:key="id" data-cityCode="{{item.cityCode}}" data-cityName="{{item.cityName}}" bindtap="selectCity">
+      <view>{{item.cityName}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,74 @@
+<!--pages/multipleStordeCard/index.wxml-->
+<view class="StordeCardWrp">
+  <view class="StordeCard">
+    <view class="merchantInfo">
+      <view class="cardHeader">{{shonDetails.productName}}</view>
+      <swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+        <block wx:for="{{bannerList}}" wx:key="id">
+          <swiper-item>
+            <image model="aspectFit" src="{{item}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="shopMessage">
+        <view class="shopMessage_child" bindtap="gotuMap">
+          <icon class="iconfont icon icon-dizhi"></icon>
+          <view class="shopMessageText">{{shonDetails.address}}</view>
+          <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+        </view>
+        <view class="shopMessage_child" bindtap="calling" data-mobile="{{shonDetails.serviceTel}}">
+          <icon class="iconfont icon icon-dianhua"></icon>
+          <view>{{shonDetails.serviceTel}}</view>
+          <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="dealMessageWrap">
+      <view class="dealMessage">
+        <view>
+        <text class="dealMessageText">有效期：</text> {{shonDetails.validityNum}}
+        </view>
+        <view>
+          <text class="dealMessageText">生效时间：</text> {{shonDetails.useLimitHour}}小时
+        </view>
+      </view>
+      <view class="dealMessage">
+        <view class="dealMessageMoney" >
+          <text class="dealMessageText">请输入本次消费金额：</text>
+          <input class="dealMessageInp" type="digit"  bindinput="countInp" value="{{num}}"></input> <text space="nbsp"> 元</text>
+        </view>
+        <view class="dealMessageBtn"  bindtap="powerDrawer" data-statu="open">确认</view>
+      </view>
+      <!-- <view wx:if="{{isFang}}" class="rechargeAmount">只需充值 <text class="amount">{{countNum}}</text>元。本次消费就免费啦！</view> -->
+    </view>
+    <view class="explain" wx:if="{{usageRule}}">
+      <view class="explain-header">
+        <icon class="iconfont icon-header icon-xuzhi"></icon>
+        <text>使用须知</text>
+      </view>
+      <view class="explain-content">
+        <!--pages/cx/index.wxml-->
+        <import src="../../wxParse/wxParse.wxml" />
+        <!-- 这里data中article为bindName -->
+        <template is="wxParse" data="{{wxParseData:usageRule.nodes}}" />
+      </view>
+    </view>
+    <!-- <view class="faddishBtn" bindtap="gotoPayment">立即购买</view> -->
+  </view>
+
+
+  <!-- 模态框 -->
+  <!--button-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+    <!--drawer content-->
+    <view class="drawer_content">
+      <view class="drawer_close" bindtap="powerDrawer" data-statu="close">x</view>
+      <view class="drawer_text">充值{{countNum}}元,本单立即免费</view>
+      <view class="drawer_btn" bindtap="gotoPayment">立即充值{{countNum}}元</view>
+    </view>
+  </view>
+
+
+
+</view>

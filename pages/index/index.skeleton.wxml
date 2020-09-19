@@ -1,0 +1,85 @@
+<!--
+此文件为开发者工具生成，生成时间: 2020/6/8 上午11:30:04 
+使用方法：
+1. 在"pages\index\index.wxml"中使用`include`指令引入此模板，
+2. 在"pages\index\index.wxss"中使用`import`指令引入"pages\index\index.skeleton.wxss"
+3. 书写对应的逻辑，来控制骨架屏的显示与隐藏
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<view class="sk-container">
+  <view class="homeWrap">
+    <view class="home">
+      <view class="locatingWrap">
+        <view class="locating">
+          <icon class="iconfont icon-dizhi sk-image sk-pseudo sk-pseudo-circle" color="#EFEFEF"></icon><text class="sk-transparent sk-text-14-2857-765 sk-text" style="background-size: 100% 1.0453rem;">北京市</text></view>
+        <view class="searchWrap">
+          <navigator class="search" style="border: none;">
+            <view class="search_inp sk-transparent sk-text-23-3333-939 sk-text" style="background-size: 62.6587% 1.6rem;">请输入商家名搜索</view>
+            <icon class="iconfont icon-fangdajing sk-image sk-pseudo sk-pseudo-circle" color="#EFEFEF"></icon>
+          </navigator>
+        </view>
+      </view>
+      <view class="swiperList">
+        <swiper autoplay="true" circular="true" class="swiperList" duration="500" indicator-active-color="#FDE50D" indicator-color="#fafafa" indicator-dots="true" interval="3000" current="4" current-item-id="true"></swiper>
+      </view>
+      <view class="tab">
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=5" data-navname="洗车养护" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-165 sk-text" style="background-size: 100% 1.0453rem;">洗车养护</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=1" data-navname="教育培训" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-4 sk-text" style="background-size: 100% 1.0453rem;">教育培训</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=6" data-navname="休闲娱乐" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-786 sk-text" style="background-size: 100% 1.0453rem;">休闲娱乐</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=2" data-navname="亲子游乐" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-626 sk-text" style="background-size: 100% 1.0453rem;">亲子游乐</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=7" data-navname="洗衣护理" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-224 sk-text" style="background-size: 100% 1.0453rem;">洗衣护理</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=8" data-navname="生活服务" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-889 sk-text" style="background-size: 100% 1.0453rem;">生活服务</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=3" data-navname="美容美发" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-901 sk-text" style="background-size: 100% 1.0453rem;">美容美发</view>
+        </view>
+        <view class="tab-item" data-linkpage="/pages/faddishCardList/index?categoryId=4" data-navname="体育健身" style="width:93.75px;">
+          <image class="tab-img sk-image"></image>
+          <view class="tab-text sk-transparent sk-text-14-2857-826 sk-text" style="background-size: 100% 1.0453rem;">体育健身</view>
+        </view>
+      </view>
+      <navigator class="gotoFaddishCardList">
+        <image class="faddish-img sk-image" mode="widthFix" style="height: 77.7833px;"></image>
+      </navigator>
+      <view class="cardList">
+        <view class="cards">
+          <view class="card-item" style="width:187.5px; height:281.25px;">
+            <view class="item" data-productid="2164">
+              <image class="card-img sk-image" mode="aspectFill" style="height:180.5px;"></image>
+              <view class="card-content" style="height:93.75px;">
+                <view class="card-title sk-transparent sk-text-16-6667-529 sk-text" style="background-size: 100% 1.12rem;">004中国电信 电信流量卡不限速手机卡纯上网无限流量卡4g联通大王卡0月租电话卡全国通用 电信卡</view>
+              </view>
+            </view>
+          </view>
+          <view class="card-item" style="width:187.5px; height:281.25px;">
+            <view class="item" data-productid="2167">
+              <image class="card-img sk-image" mode="aspectFill" style="height:180.5px;"></image>
+              <view class="card-content" style="height:93.75px;">
+                <view class="card-title sk-transparent sk-text-16-6667-579 sk-text" style="background-size: 100% 1.12rem;">002中国联通（China Unicom） 腾讯大王卡全国通用联通4G流量卡京东日租卡京粉卡手机卡上</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

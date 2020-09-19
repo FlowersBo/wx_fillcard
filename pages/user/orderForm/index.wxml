@@ -1,0 +1,41 @@
+<!--pages/user/orderForm/index.wxml-->
+<view class="orderFormWrap">
+  <view class="orderForm">
+    <block wx:if="{{isFang}}">
+      <view class="orderFormListWrap" wx:for="{{orderList}}" wx:key="index" data-orderId="{{item.orderId}}" bindtap="gotoOrderDetails">
+        <view class="orderCode">
+          <!-- <view class="code">订单号：{{item.orderNO}}</view> -->
+          <view class="order-shopName">{{item.merchantName}}</view>
+          <view class="start">{{item.writeOffStatus}}</view>
+        </view>
+        <view class="orderFormList">
+          <block wx:for="{{item.proList}}" wx:for-item="cell" wx:key="id">
+            <view class="orderFormList-item">
+              <view class="order-img">
+                <image mode="aspectFill" src="{{cell.pic}}"></image>
+              </view>
+              <view class="order-content">
+                <view class="order-detail">{{cell.productName}}</view>
+                <view class="number">数量：{{cell.count}}张</view>
+                <view>
+                  合计：￥
+                  <text class="order-price">{{cell.amountTotal}}</text>
+                </view>
+                <view>有效期：{{item.validity}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <!-- <view class="orderBtnWrap">
+          <view class="orderBtn" data-orderId="{{item.orderId}}" bindtap="gotoOrderDetails">订单详情</view>
+        </view> -->
+      </view>
+    </block>
+    <view class="boxWrap" wx:else>
+      <view class="box">
+        <icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+        <view>亲亲，暂无订单稍后再来吧~</view>
+      </view>
+    </view>
+  </view>
+</view>

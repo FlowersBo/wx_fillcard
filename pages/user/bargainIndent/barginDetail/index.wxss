@@ -1,0 +1,253 @@
+/* pages/user/bargainIndent/barginDetail/index.wxss */
+@import "/wxParse/wxParse.wxss";
+
+page {
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+}
+
+.sellCardWrap {
+  width: 100%;
+}
+
+.sellCard {
+  width: 100%;
+  position: relative;
+}
+
+.swiperWrap {
+  position: relative;
+}
+
+.photoAlbum {
+  position: absolute;
+  right: 20rpx;
+  bottom: 15rpx;
+  height: 50rpx;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 25rpx;
+  background-color: #200;
+  opacity: 0.7;
+  z-index: 100;
+}
+
+.icon-tupian {
+  font-size: 36rpx;
+  color: #fff;
+  margin-right: 10rpx;
+  margin-bottom: 15rpx;
+}
+
+.photoAlbumText {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.swiper-item {
+  width: 100%;
+  height: 500rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 商家信息 */
+.merchantMessage {
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 10rpx;
+  height: 250rpx;
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+}
+
+.shopMessage {
+  flex: 1;
+  min-width: 0;
+  padding-left: 20rpx;
+}
+
+.shopMessage_child {
+  height: 60rpx;
+  line-height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.shopImg {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.shopImg image {
+  width: 100%;
+  height: 100%;
+}
+
+.shopMessageText {
+  font-size: 28rpx;
+  color: #200;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  margin-top: 11rpx;
+}
+
+.icon {
+  margin-right: 10rpx;
+  font-size: 30rpx;
+  color: #c0c0c0;
+}
+
+.icon-iconfontxiangxia1copy19 {
+  margin-left: auto;
+}
+
+/* 说明 */
+.explain {
+  background-color: #fff;
+}
+
+.explain_title {
+  width: 100%;
+  height: 80rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.icon-xuzhi1 {
+  font-weight: 600;
+  margin-right: 10rpx;
+  font-size: 40rpx;
+  color: #c0c0c0;
+}
+
+
+/* 二维码 */
+.vsCode{
+  width: 100%;
+  height: 500rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.vsCodeImg{
+  width: 300rpx;
+  height: 300rpx;
+  margin-bottom: 16rpx;
+}
+.vsCodeImg image{
+  width: 100%;
+  height: 100%;
+}
+.vsCodeText{
+  font-size: 36rpx;
+}
+/* 遮罩 */
+.shade{
+  width: 100%;
+  height: 500rpx;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  color: #fff;
+  text-align: center;
+  line-height: 500rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+/* 价格 */
+.priceDetail{
+  width: 100%;
+  height: 140rpx;
+  background-color: #fff;
+  margin: 20rpx 0 10rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 6rpx 40rpx;
+}
+.priceDetail_item{
+  display: flex;
+  justify-content: space-between;
+}
+.price_text{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #EA2D23;
+}
+/* 砍价人 */
+.explainPerson{
+  width: 100%;
+  background-color: #fff;
+  padding: 15rpx 0;
+  margin-bottom: 20rpx;
+}
+.person{
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  margin-bottom: 10rpx;
+}
+/* 分享按钮 */
+.btnWrap{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+}
+.btn {
+  width: 50%;
+  height: 100%;
+  background: #FF9A00;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 90rpx;
+}
+
+button::after {
+  border-radius: 0;
+}
+button{
+  border-radius: 0;
+}
+
+.btn_price{
+  width: 50%;
+  height: 100%;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: #FDE724;
+}
+
+.btn_price_text{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #EA2D23;
+}

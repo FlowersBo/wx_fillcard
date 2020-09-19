@@ -1,0 +1,278 @@
+/* pages/sellCard/cardDetails/index.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #eee9e9;
+}
+.cardDetailsWrap{
+  width: 100%;
+}
+.cardDetails{
+  width: 100%;
+}
+.cardListWrap{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cardList{
+  width: 96%;
+}
+
+.cards{
+  width: 100%;
+  height: 280rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.cardChild{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+}
+.shopName{
+  width: 100%;
+  height: 60rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color:rgb(29, 29, 28);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+.cardChild_particulars{
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.cardChild_img{
+  width: 40%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.contentWrap{
+  width: 57%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  justify-content: space-between;
+  color: #606060;
+}
+
+.caedTime{
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  color:#F17841;
+}
+.transfer{
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 20rpx; 
+}
+
+.residueDegreeWrap{
+  /* display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 20rpx; */
+}
+.periodValidity{
+  font-size: 22rpx;
+}
+.price_text{
+  text-decoration:line-through;
+}
+
+.priceWrap{
+  width: 100%;
+  height: 130rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.operationWrap{
+  display: flex;
+  justify-content: space-around;
+}
+.inp{
+  width: 90%;
+  height: 80rpx;
+  background-color: #ddd;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  padding-left: 15rpx;
+  font-size: 32rpx;
+}
+
+.calculate{
+  display: flex;
+  justify-content: space-around;
+  font-size: 28rpx;
+}
+.section{
+  color: #FF181F;
+}
+
+/* .sellBtnWrap{
+  margin-top: 50rpx;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sellBtn{
+  width: 250rpx;
+  height: 100%;
+  background-color: rgb(233, 27, 13);
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  font-size: 36rpx;
+  color: #fafafa;
+} */
+
+
+
+
+
+
+
+/* 模态框 */
+/*button*/
+.btnss {
+  width: 80%;
+  padding: 20rpx 0;
+  border-radius: 20rpx;
+  text-align: center;
+  margin: 50rpx 10%;
+  background-color: #FDE50D;
+  color: #1b1b1b;
+}
+
+/*mask*/
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.7;
+  overflow: hidden;
+}
+/*content*/
+.drawer_box {
+  width: 600rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #FAFAFA;
+  margin: -300rpx 75rpx 0 75rpx;
+  border-radius: 6rpx;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+}
+.drawer_title{
+  padding:30rpx;
+  font: 40rpx "microsoft yahei";
+  text-align: center;
+  border-bottom: 1rpx solid #ddd;
+}
+.drawer_content {
+  height: 200rpx;
+  overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+.mask_text{
+  line-height: 1.5;
+}
+.pirc_text{
+  color: #FF181F;
+}
+.pirc_text:last-child{
+  color: #3CC51F;
+}
+.btnWrap{
+  display: flex;
+  justify-content: space-between;
+}
+.btn_ok{
+  font: 40rpx "microsoft yahei";
+  text-align: center;
+  border-top: 2rpx solid #E8E8EA;
+  color: #3CC51F;
+}
+.btn_ok:last-child{
+  width: 49.5%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #FF181F;
+  border-left: 2rpx solid #E8E8EA;
+}
+.btn_ok:first-child{
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.top{
+  padding-top:16rpx;
+}
+.bottom {
+  padding-bottom:16rpx;
+}
+.title {
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 160rpx;
+  text-align: center;
+  display: inline-block;
+  font: 300 28rpx/60rpx "microsoft yahei";
+}
+.input_base {
+  border: 2rpx solid #ccc;
+  padding-left: 10rpx;
+  margin-right: 50rpx;
+}
+.input_h30{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.input_h60{
+  height: 180rpx;
+}
+.input_view{
+  font: 24rpx "microsoft yahei";
+  background: #fff;
+  color:#000;
+  line-height: 60rpx;
+}
+/* input {
+  font: 12px "microsoft yahei";
+  background: #fff;
+  color:#000 ;
+} */
+radio{
+  margin-right: 40rpx;
+}
+.grid { display: -webkit-box; display: box; }
+.col-0 {-webkit-box-flex:0;box-flex:0;}
+.col-1 {-webkit-box-flex:1;box-flex:1;}
+.fl { float: left;}
+.fr { float: right;}

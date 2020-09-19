@@ -1,0 +1,16 @@
+<!--pages/wxlogin/index.wxml-->
+<view  class='wxloginWrap'>
+  <view class='wxLogin'>
+    <view class='header'>
+      <image class='headerImage' src='/resource/img/helpyou.png'></image>
+    </view>
+    <view class='wxLogin-text'>
+      <text class="text_top">申请获取以下权限</text>
+      <text class="text_bottom">获取你微信绑定手机号</text> 
+    </view>
+    <button class='bottom' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" lang="zh_CN" >授权手机号登录</button>
+
+    <!-- <button class='bottom' open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">授权登录</button> -->
+  </view>
+</view>
+

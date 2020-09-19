@@ -1,0 +1,48 @@
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" data="{{hideCategory, hideGoods, hideFooter, hideBanner}}" />
+<view class="scrollWrap" wx:else>
+  <view class="tabWrap">
+    <view class="searchWrap">
+      <view class="search">
+        <input class="search_inp" placeholder="请输入商家名查找" placeholder-class="input-placeholder" type="text" bindinput="findMerchantFun"></input>
+        <icon class="iconfont icon-fangdajing" bindtap="findFun"></icon>
+      </view>
+    </view>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <view class="tab-item {{categoryId==0?'active':''}}"><text class="tab-itemText  {{categoryId==0?'activeText':''}}"  data-current="0"  bindtap="swichNav">推荐</text></view>
+      <block wx:for="{{classifyList}}" wx:key="id">
+        <view class="tab-item {{item.active}}"> <text class="tab-itemText {{item.activeText}}" data-current="{{item.categoryId}}" bindtap="swichNav">{{item.categoryName}}</text> </view>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- <swiper scroll-x="false" class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+    style="height:{{winHeight}}rpx">
+      <swiper-item wx:for="{{recordsList}}" wx:key="*index"  catchtouchmove="stopTouchMove"> -->
+  <scroll-view scroll-y="true" class="scoll-h" style="height:{{winHeight}}rpx" bindscrolltolower='scrollToLower' lower-threshold='10' upper-threshold='0'>
+    <!-- bindscrolltoupper='scrollToUpper' 下拉刷新 -->
+    <block wx:for="{{recordsList}}" wx:key="id">
+      <view class="item-ansWrap">
+        <view class="item-ans" bindtap='shopPurchase' data-merchantId='{{item.merchantId}}' data-merchantName="{{item.merchantName}}">
+          <view class="avatar">
+            <image class="img" src="{{item.logo}}"></image>
+          </view>
+          <view class="expertInfo">
+            <view class="name">{{item.merchantName}}</view>
+            <!-- {{item.resellCount}}\n张 -->
+            <!-- <view class="tag">会员卡正在转让...</view> -->
+            <view class="startWrap"  wx:if="{{item.star}}">
+              <view class="startText">帮你转推荐指数:</view>
+              <block wx:for="{{item.star}}" wx:key="id">
+                <icon class="iconfont icon-xingzhuang60kaobei2"></icon>
+              </block>
+            </view>
+            <view  style="font-size:28rpx">{{item.marketLabel}}</view>
+            <view class="answerHistory">{{item.addressFull}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <!-- </swiper-item>
+  </swiper> -->
+</view>

@@ -1,0 +1,7 @@
+<!--pages/search/index.wxml-->
+<view class="searchWrap">
+  <view class="search">
+    <input class="search_inp" type="text" confirm-type="search" placeholder="请输入关键词" placeholder-class="input-placeholder" type="text" bindinput="findMerchantFun" bindconfirm="bindconfirm"></input>
+    <icon class="iconfont icon-fangdajing" bindtap="findFun"></icon>
+  </view>
+</view>

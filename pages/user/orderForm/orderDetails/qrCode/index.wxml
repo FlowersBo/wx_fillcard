@@ -1,0 +1,9 @@
+<!--pages/user/orderForm/orderDetails/qrCode/index.wxml-->
+<view class="qrCodeWrap">
+  <view class="qrCode">
+    <view class="img">
+      <image class="qrCode-img" src="{{qrCode}}"></image>
+    </view>
+    <view class="qrCode-text">请将此码展示给商家核销</view>
+  </view>
+</view>

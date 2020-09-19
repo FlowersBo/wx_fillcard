@@ -1,0 +1,134 @@
+<!--pages/index/cardParticulars/index.wxml-->
+<view class="cardParticularsWrap">
+  <swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+    <block wx:for="{{shopCardsDetails.bannerList}}" wx:key="id">
+      <swiper-item>
+        <image src="{{item.photoUrl}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="shopMessage">
+    <view class="shopMessage_child" bindtap="gotuMap">
+      <icon class="iconfont icon icon-dizhi"></icon>
+      <view class="shopMessageText">{{shopCardsDetails.addressFull}}</view>
+      <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+    </view>
+    <view class="shopMessage_child" bindtap="calling" data-mobile="{{shopCardsDetails.serviceTel}}">
+      <icon class="iconfont icon icon-dianhua"></icon>
+      <view>{{shopCardsDetails.serviceTel}}</view>
+      <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+    </view>
+  </view>
+  <view class="cardParticulars">
+    <view class="cards">
+      <view class="cardChild">
+        <image class="cardChild_img" mode="aspectFill" src="{{shopCardsDetails.pic}}"></image>
+        <view class="contentWrap">
+          <!-- <view class="shopName">朝阳合生汇音乐蛋糕派对</view> -->
+          <view class="caedTime">{{shopCardsDetails.memberCardName}}</view>
+          <block wx:if="{{shopCardsDetails.cardType=='0'}}">
+            <view wx:if='{{shopCardsDetails.surplusCount}}' class="transfer">
+              <view class="transfer_card">转让卡:
+                <text style="color:#F17841">{{shopCardsDetails.surplusCount}}次</text>
+              </view>
+              <view class="transfer_price">转让价:
+                <text style="color:#F17841">{{shopCardsDetails.salePrice}}元</text>
+              </view>
+            </view>
+            <view class="transfer">
+              <view class="home_price">店内单次价:
+                <text class="price_text">{{shopCardsDetails.singlePriceMarket}}</text>元/次</view>
+              <view class="low_price">低至:{{shopCardsDetails.saleAveragePrice?shopCardsDetails.saleAveragePrice:''}}元/次</view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="transfer">
+              <view class="home_price">剩余金额:
+                <text class="low_price">{{shopCardsDetails.surplusAmount}}</text>元</view>
+              <view class="low_price">转让价:{{shopCardsDetails.salePrice}}元</view>
+            </view>
+          </block>
+          <view wx:if="{{shopCardsDetails.validity}}" class="periodValidity">有效期:{{shopCardsDetails.validity?shopCardsDetails.validity:''}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="employ_text">
+      <view class="cardList_headText"></view>
+      <text>规则说明</text>
+    </view>
+    <view class="employWrap">
+      <view class="employ">
+        <view class="employ_content">
+          <view class="content_text">
+            <!--pages/cx/index.wxml-->
+            <import src="../../wxParse/wxParse.wxml" />
+            <!-- 这里data中article为bindName -->
+            <template is="wxParse" data="{{wxParseData:usageRule.nodes}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="employ_text">
+      <view class="cardList_headText"></view>
+      <text>店铺介绍</text>
+    </view>
+    <view class="employWrap">
+      <view class="employ">
+        <view class="employ_content">
+          <view class="content_text">
+            <import src="../../wxParse/wxParse.wxml" />
+            <!-- 这里data中article为bindName -->
+            <template is="wxParse" data="{{wxParseData:detailDesc.nodes}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="lockingWrap">
+      <view class="locking">
+        <view class="employ_text">
+          <view class="cardList_headText"></view>
+          <text>相关推荐</text>
+        </view>
+
+        <view class="cards">
+          <block wx:for="{{recommendList}}" wx:key="id">
+            <view class="cardChild" id="{{item.memberCardId}}" bindtap="cardParticulars">
+              <image class="cardChild_img" mode="aspectFill" src="{{item.pic}}"></image>
+              <view class="contentWrap">
+                <!-- <view class="shopName">朝阳合生汇音乐蛋糕派对</view> -->
+                <view class="caedTime">{{item.memberCardName}}</view>
+                <block wx:if="{{item.cardType=='0'}}">
+                  <view wx:if='{{item.surplusCount}}' class="transfer">
+                    <view class="transfer_card">转让卡:{{item.surplusCount}}次</view>
+                    <view class="transfer_price">转让价:
+                      <text style="color:#F17841">{{item.salePrice}}元</text>
+                    </view>
+                  </view>
+                  <view class="transfer">
+                    <view class="home_price">店内单次价:
+                      <text class="price_text">{{item.singlePriceMarket}}</text>元/次</view>
+                    <view class="low_price">低至:{{item.saleAveragePrice?item.saleAveragePrice:''}}元/次</view>
+                  </view>
+                </block>
+                <block wx:else>
+                  <view class="transfer">
+                    <view class="home_price">剩余金额:
+                      <text class="low_price">{{item.surplusAmount}}</text>元</view>
+                    <view class="low_price">转让价:{{item.salePrice}}元</view>
+                  </view>
+                </block>
+                <view wx:if="{{item.validity}}" class="periodValidity">有效期:{{item.validity}}</view>
+              </view>
+            </view>
+          </block>
+        </view>
+
+      </view>
+    </view>
+
+    <view class="locking_btn" bindtap="payment">
+      <view class="btn">立即购买</view>
+      <view class="btn_price">￥{{shopCardsDetails.salePrice}}</view>
+    </view>
+  </view>
+</view>

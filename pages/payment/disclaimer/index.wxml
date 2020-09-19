@@ -1,0 +1,7 @@
+<!--pages/payment/disclaimer/index.wxml-->
+<view class="disclaimerWrap">
+  <view class="disclaimer">
+    <!-- <web-view src="https://mp.bnzbj.com/static/agreement_c.html"></web-view> -->
+    <image class="img" src="https://file.bnzbj.com/common/agree01.jpg"></image>
+  </view>
+</view>

@@ -1,0 +1,70 @@
+<!--pages/bargainShare/index.wxml-->
+<view class="bargainShareWrap">
+	<view class="bargainShare">
+		<view class="bargainDetail">
+			<view class="avtar">
+				<view class="avtarImg">
+					<image src="{{merchant.avatarUrl}}"></image>
+				</view>
+				<view class="avtarText">
+					<text decode = "{{true}}">{{merchant.accountName}}&nbsp;&nbsp; 请您帮他砍一刀！拜托~</text>
+					<text class="avtarText_bottom">帮TA砍到最低价吧~</text>
+				</view>
+			</view>
+			<view class="shopDetail">
+				<view class="shopDetailImg">
+					<image src="{{merchant.pic}}"></image>
+				</view>
+				<view class="shop">
+					<view class="shop_top">{{merchant.productName}}</view>
+					<view class="shop_bottom">
+						<view class="originalPrice">原价￥{{merchant.productAmount}}</view>
+						<view class="price">当前价￥{{merchant.surplusAmount}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="bargainExplain">
+			<view class="explain">当前{{merchant.surplusAmount}}元，您砍一刀，就能立减{{merchant.singleCutPrice}}元！</view>
+			<view class="explain_text">我太想要这个物品了，快帮我砍一刀吧！</view>
+			<view class="btn" wx:if="{{validityStatus==='0'}}" data-statu="open" bindtap="bargainFun">立即砍一刀</view>
+		</view>
+		<view class="relatives">
+			<view class="relatives_title">帮价亲友团</view>
+			<scroll-view scroll-y="true" class="relativesDetail">
+				<block wx:for="{{relatives}}" wx:key="index">
+					<view class="relatives_person">
+						<view class="personImg">
+							<image src="{{item.avatarUrl}}"></image>
+						</view>
+						<view class="personDetail">
+							<view class="personDetail_top">
+								<view class="name">{{item.accountName}}</view>
+								<view class="person_price">帮砍{{item.singleCutPrice}}元</view>
+							</view>
+							<view class="personDetail_bottom">{{item.createdTime}}</view>
+						</view>
+					</view>
+				</block>
+			</scroll-view>
+		</view>
+
+		<!--mask-->
+		<view class="drawer_screen" bindtap="bargainCloseFun" data-statu="close" wx:if="{{showModalStatus}}"></view>
+		<!--content-->
+		<!--使用animation属性指定需要执行的动画-->
+		<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+			<view class="drawer_box_content">
+				<view class="drawer_box_contentImg">
+					<image src="{{merchant.pic}}"></image>
+				</view>
+				<view class="drawer_box_contentText">
+					<text>感谢您的参与</text>
+					<text wx:if="{{bargainTtxt}}">{{bargainTtxt}}</text>
+					<text wx:else>本次砍价扣除 <text class="drawer_box_contentPrice">{{merchant.singleCutPrice}}</text>元 </text>
+				</view>
+			</view>
+			<view class="drawer_box_btn" catchtap="gotobargainDetailFun">我也要参与</view>
+		</view>
+	</view>
+</view>

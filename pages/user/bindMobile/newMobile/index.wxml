@@ -1,0 +1,15 @@
+<!--pages/user/bindMobile/newMobile/index.wxml-->
+<view class="newMobileWrap">
+  <view class="newMobile">
+    <form bindsubmit="formSubmit">
+      <input name="mobile" class="inp" type="number" placeholder="请输入绑定手机号码" maxlength="11" bindinput="bindMobile"></input>
+      <view class="verificationWrap">
+        <input name="mobileCode" type="number" class="codeInp" placeholder="输入手机验证码" maxlength="4" placeholder-style="color:#A7A7A7" bindinput="bindCode"></input>
+        <button class='verification' bindtap='getVerificationCode' disabled='{{disabled}}'>{{codename}}</button>
+      </view>
+      <view class="btnWrap">
+        <button class="code_btn" formType="submit" disabled="{{disabled1}}">绑定</button>
+      </view>
+    </form>
+  </view>
+</view>

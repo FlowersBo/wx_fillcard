@@ -1,0 +1,42 @@
+<!--pages/shopCardList/index.wxml-->
+<view class="cardParticularsWrap">
+  <swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+    <block wx:for="{{bannerList}}" wx:key="id">
+      <swiper-item>
+        <image model="aspectFit" src="{{item.photoUrl}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="cardParticulars">
+    <view class="shopMessage">
+      <view class="shopMessage_child" bindtap="gotuMap">
+        <icon class="iconfont icon icon-dizhi"></icon>
+        <view class="shopMessageText">{{shonDetails.addressFull}}</view>
+        <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+      </view>
+      <view class="shopMessage_child" bindtap="calling" data-mobile="{{shonDetails.serviceTel}}">
+        <icon class="iconfont icon icon-dianhua"></icon>
+        <view>{{shonDetails.serviceTel}}</view>
+        <icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+      </view>
+    </view>
+    <view class="cards">
+      <block wx:for="{{productList}}" wx:key="id">
+        <view class="cardChild">
+          <image class="cardChild_img" src="{{item.pic?item.pic:'/resource/img/default.jpg'}}" mode="aspectFill"></image>
+          <view class="contentWrap">
+            <view class="caedTime">{{item.productName}}</view>
+            <view class="priceWrap">
+              <view class="transfer_marketPrice">原价:{{item.marketPrice}}元</view>
+              <view class="transfer_price">现价:{{item.price}}元</view>
+            </view>
+            <view class="btnWrap">
+              <view class="periodValidity">{{item.validityNumDesc}}</view>
+              <view class="btn" data-productId="{{item.productId}}"  bindtap="shonCardDetails">查看详情</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<!--pages/share/index.wxml-->
+<view class="generalizeDetailsWrap">
+  <view class="generalizeDetails">
+    <view class="imgWrap">
+      <image class="img" src="{{generalize.pic}}"></image>
+    </view>
+    <view class="cardWrsp">
+      <view class="cards">
+        <view class="address">{{generalize.merchantName}}</view>
+        <view class="telephone">TEL：{{generalize.serviceTel}}</view>
+        <view class="cardName">{{generalize.productName}}</view>
+        <view class="cardDetailsWrap">
+          <view class="cardDetails">
+            <view class="details">原价:
+              <text class="money">{{generalize.price}}元</text>
+            </view>
+            <view class="details">卡类型:
+              <text class="money">{{generalize.cardType=='0'?'次卡':'储值卡'}}</text>
+            </view>
+            <!-- <view class="details">有效期:
+              <text class="money">12个月</text>
+            </view> -->
+          </view>
+          <view class="cardDetails">
+            <view class="details">售卖价:
+              <text class="money">{{generalize.spreadPrice}}元</text>
+            </view>
+
+            <view wx:if="{{generalize.cardType=='0'}}" class="details">总次数:
+              <text class="money">{{generalize.totalCount}}次</text>
+            </view>
+            <view wx:else class="details" style="visibility: hidden;">无</view>
+          </view>
+        </view>
+      </view>
+      <view class="notice">
+        <view class="headline">使用须知:</view>
+        <view class="notice_content">
+          <!--pages/cx/index.wxml-->
+          <import src="../../wxParse/wxParse.wxml" />
+          <!-- 这里data中article为bindName -->
+          <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="shareBtn" bindtap="gotoPayment">购买</button>
+</view>

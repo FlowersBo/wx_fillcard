@@ -1,0 +1,130 @@
+<view class="sellCardWrap">
+	<view class="sellCard">
+		<!-- <view class="cardList_head">
+      <view class="cardList_headText"></view>
+      <text>我的卡</text>
+    </view> -->
+		<view class="swiperWrap">
+			<swiper class="swiper-item" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+				<block wx:for="{{merchant.bannerList}}" wx:key="id">
+					<swiper-item>
+						<image model="aspectFit" src="{{item.photoUrl}}" class="slide-image" />
+					</swiper-item>
+				</block>
+			</swiper>
+      <view class="photoAlbum" bindtap="gotophotoAlbum">
+        <icon class="iconfont icon-tupian"></icon>
+        <text class="photoAlbumText">{{merchant.photoCount}}</text>
+      </view>
+		</view>
+
+		<!-- 商家信息 -->
+		<view class="merchantMessage">
+			<view class="shopImg">
+				<image mode="aspectFill" src="{{merchant.logo}}"></image>
+			</view>
+			<view class="shopMessage">
+				<view class="shopMessage_child">
+					<icon class="iconfont icon icon-icon-test"></icon>
+					<view class="shopMessageText">{{merchant.merchantName}}</view>
+				</view>
+				<view class="shopMessage_child" data-mobile="{{merchant.serviceTel}}" bindtap="calling">
+					<icon class="iconfont icon icon-dianhua"></icon>
+					<view class="shopMessageText">{{merchant.serviceTel}}</view>
+					<icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+				</view>
+				<view class="shopMessage_child" bindtap="gotuMap">
+					<icon class="iconfont icon icon-dizhi"></icon>
+					<view class="shopMessageText">{{merchant.addressFull}}</view>
+					<icon class="iconfont icon icon-iconfontxiangxia1copy19"></icon>
+				</view>
+			</view>
+		</view>
+
+		<block wx:if="{{isFang}}">
+			<!-- 一手卡 -->
+			<view class="cardListWrap">
+				<view class="cardList">
+					<view class="cardTitle">
+						<icon class="iconfont icon icon-xuzhi1"></icon>
+						<view class="title">店内会员卡信息</view>
+					</view>
+					<block wx:for="{{firstCard}}" wx:key="id">
+						<view class="cardsss" data-productId="{{item.productId}}" bindtap="shonCardDetails">
+							<!-- <view class="shopNamess">{{item.merchantName}}</view> -->
+							<view class="cardChildss">
+								<image class="cardChild_imgss" src="{{item.pic}}" mode="aspectFit"></image>
+								<view class="contentWrapss">
+									<view class="caedTimess">{{item.productName}}</view>
+									<view class="priceWrap">
+										<view class="transfer_pricess marketPrice" wx:if="{{item.marketPrice}}">原价:{{item.marketPrice}}元</view>
+										<view class="transfer_pricess">现价:{{item.price}}元</view>
+									</view>
+									<view class="periodValidityss" wx:if="{{item.validityNumDesc}}">{{item.validityNumDesc}}</view>
+									<view class="periodValidityss" wx:else></view>
+									<view class="btnss" data-productId="{{item.productId}}" catchtap="shonCardDetails">查看详情</view>
+								</view>
+							</view>
+						</view>
+					</block>
+				</view>
+			</view>
+
+			<!-- 二手卡 -->
+			<view wx:if="{{shopCards.length!=0}}" class="cardListWrap">
+				<view class="cardList">
+					<view class="cardTitle">
+						<icon class="iconfont icon icon-xuzhi1"></icon>
+						<view class="title">转让会员卡信息</view>
+					</view>
+					<view class="cards" wx:for="{{shopCards}}" wx:key="id">
+						<view class="cardChild" data-id="{{item.memberCardId}}" bindtap="cardParticulars">
+							<!-- <view class="shopName">{{item.merchantName}}</view> -->
+							<view class="cardChild_particulars">
+								<image class="cardChild_img" src="{{item.pic}}" mode="aspectFill"></image>
+								<view wx:if="{{item.cardType=='0'}}" class="contentWrap">
+									<view class="caedTime">单人{{item.totalCount}}次卡</view>
+									<view class="transfer">
+										<view class="transfer_card">原次数:{{item.totalCount}}次</view>
+										<view class="transfer_price">购买价:
+											<text style="color:#F17841">{{item.salePrice}}元</text>
+										</view>
+									</view>
+									<view class="btn_wrap">
+										<view class="residueDegreeWrap">
+											<view class="residueDegree" wx:if='{{item.surplusCount}}'>剩余次数:{{item.surplusCount}}次</view>
+											<view class="periodValidity">有效期:{{item.validity}}</view>
+										</view>
+										<view class="sellCardBtn" data-id="{{item.memberCardId}}" catchtap="cardParticulars">查看详情</view>
+									</view>
+								</view>
+
+								<view wx:else class="contentWrap">
+									<view class="caedTime">{{item.memberCardName}}</view>
+									<view class="transfer">
+										<view class="transfer_card">剩余金额:{{item.surplusAmount}}元</view>
+										<view class="transfer_price">转让价:
+											<text style="color:#F17841">{{item.salePrice}}元</text>
+										</view>
+									</view>
+									<view class="btn_wrap">
+										<view class="residueDegreeWrap">
+											<view class="periodValidity" wx:if="{{item.validity}}">有效期:{{item.validity}}</view>
+										</view>
+										<view class="sellCardBtn" data-id="{{item.memberCardId}}" catchtap="cardParticulars">查看详情</view>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+		<view class="boxWrap" wx:else>
+			<view class="box">
+				<icon class="iconfont icon-icon_wuxiaoxi-"></icon>
+				<view>亲亲，暂无售卖信息稍后再来吧~</view>
+			</view>
+		</view>
+	</view>
+</view>

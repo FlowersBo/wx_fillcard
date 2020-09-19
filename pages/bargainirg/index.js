@@ -1,0 +1,230 @@
+// pages/bargainirg/index.js
+var that;
+var wxRequest = require('../../utils/requestUrl.js');
+var WxParse = require('../../wxParse/wxParse.js');
+const app = getApp();
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    indicatorDots: true,
+    vertical: false,
+    circular: true,
+    interval: 3000,
+    autoplay: true,
+    duration: 500,
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    that = this;
+    var productId = options.productId;
+    console.log('订单ID', productId);
+    that.setData({
+      productId: productId
+    })
+    wx.hideShareMenu();
+    that.merchantDetail();
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+  merchantDetail: function () {
+    var productId = that.data.productId;
+    var dataUrl = "/product/productDetail?productId=" + productId;
+    var param = {};
+    wxRequest(dataUrl, param)
+      .then(function (res) {
+        //业务逻辑
+        console.log('商家信息', res);
+        if (res.code == '0000') {
+          var merchant = res;
+          var latitude = res.latitude;
+          var longitude = res.longitude;
+          var article = res.cutPriceDesc;
+          var merchantId = res.merchantId;
+          var productName = res.productName;
+          var spreadTitle = res.spreadTitle;
+          that.shareFun();
+          WxParse.wxParse('article', 'html', article, that, 5);
+          wx.setNavigationBarTitle({
+            title: productName
+          });
+          that.setData({
+            merchant: merchant,
+            latitude: latitude,
+            longitude: longitude,
+            merchantId: merchantId,
+            spreadTitle: spreadTitle
+          });
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      })
+      .catch(function (res) {
+        console.log('请求失败', res);
+      })
+  },
+
+
+
+  //创建订单
+  shareFun: function (e) {
+    var token = wx.getStorageSync('token');
+    console.log("是否有token", token);
+    if (token) {
+      var productId = that.data.productId;
+      var dataUrl = "/trade/cutPrice/createCutPrice";
+      var param = {
+        productId: productId
+      };
+      wxRequest(dataUrl, param)
+        .then(function (res) {
+          //业务逻辑
+          console.log('创建订单', res);
+          if (res.code == '0000') {
+            var cutPriceId = res.data.cutPriceId;
+            that.setData({
+              cutPriceId: cutPriceId
+            })
+          } else {
+            wx.showToast({
+              title: res.msg,
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        })
+        .catch(function (res) {
+          console.log('请求失败', res);
+        })
+    } else {
+      wx.navigateTo({
+        url: '/pages/wxlogin/index',
+      })
+    }
+  },
+  //跳转相册
+  gotophotoAlbum: function () {
+    var merchantId = that.data.merchantId;
+    wx.navigateTo({
+      url: '/pages/photoAlbum/index?merchantId=' + merchantId,
+    })
+  },
+
+  //跳转地图
+  gotuMap: function () {
+    var latitude = that.data.latitude;
+    var longitude = that.data.longitude;
+    if (latitude) {
+      wx.navigateTo({
+        url: '/pages/map/index?latitude=' + latitude + '&longitude=' + longitude,
+      })
+    }
+  },
+
+  // 拨打电话
+  calling: function (e) {
+    console.log(e);
+    var mobile = e.currentTarget.dataset.mobile;
+    wx.makePhoneCall({
+      phoneNumber: mobile,
+      success: function () {
+        console.log("拨打电话成功！")
+      },
+      fail: function () {
+        console.log("拨打电话失败！")
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    console.log("下拉刷新")
+    // 显示顶部刷新图标  
+    wx.showNavigationBarLoading();
+    that.merchantDetail();
+    // 停止下拉动作  
+    if (that.data.merchant) {
+      // 隐藏导航栏加载框  
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+    }
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+
+  onShareAppMessage: function (options) {
+    var spreadTitle = that.data.spreadTitle;
+    var cutPriceId = that.data.cutPriceId;
+    var productId = that.data.productId;
+    console.log(options);
+    console.log(cutPriceId);
+    // 来自页面内的按钮的转发
+    if (options.from == 'button') { // 此处可以修改 shareObj 中的内容
+      console.log('来自页面内的按钮的转发')
+      var shareObj = {
+        title: spreadTitle,
+        path: '/pages/bargainShare/index?cutPriceId=' + cutPriceId + '&productId=' + productId,
+        imageUrl: '',
+        success: function (res) {
+          console.log(res + '成功');
+          if (res.errMsg == 'shareAppMessage:ok') {
+            console.info(res + '成功');
+          }
+        },
+        fail: function () {
+          if (res.errMsg == 'shareAppMessage:fail cancel') { // 用户取消转发
+          } else if (res.errMsg == 'shareAppMessage:fail') {}
+        },
+        complete: function () {}
+      };
+      console.log('分享详情', shareObj);
+    }
+    return shareObj;
+  }
+})

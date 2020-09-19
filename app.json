@@ -1,0 +1,94 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bargainShare/index",
+    "pages/buyCard/index",
+    "pages/bargainirg/index",
+    "pages/user/bargainIndent/index",
+    "pages/user/bargainIndent/barginDetail/index",
+    "pages/user/index",
+    "pages/shopPurchase/index",
+    "pages/shopCardList/shopCardDetails/index",
+    "pages/user/meVipcard/index",
+    "pages/shopCardList/index",
+    "pages/generalize/index",
+    "pages/user/withdrawRecord/index",
+    "pages/multipleStordeCard/index",
+    "pages/cx/index",
+    "pages/faddishDetail/index",
+    "pages/user/orderForm/orderDetails/index",
+    "pages/user/orderForm/orderDetails/qrCode/index",
+    "pages/user/orderForm/index",
+    "pages/faddishCardList/index",
+    "pages/search/index",
+    "pages/user/bankCard/addBankCard/index",
+    "pages/user/bankCard/index",
+    "pages/share/index",
+    "pages/cardParticulars/index",
+    "pages/generalize/generalizeDetails/index",
+    "pages/map/index",
+    "pages/sellCard/index",
+    "pages/respirator/payments/address/index",
+    "pages/respirator/payments/index",
+    "pages/index/cityList/index",
+    "pages/user/bindMobile/index",
+    "pages/user/bindMobile/newMobile/index",
+    "pages/cardDetails/index",
+    "pages/payment/disclaimer/index",
+    "pages/payment/index",
+    "pages/user/meVipcard/cardConsume/index",
+    "pages/user/meWallet/index",
+    "pages/user/sellVipcard/index",
+    "pages/wxlogin/index",
+    "pages/user/meVipcard/cardConsume/useRecord/index",
+    "pages/respirator/index",
+    "pages/respirator/orderform/index",
+    "pages/photoAlbum/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "帮你转",
+    "navigationBarBackgroundColor": "#FDE50D",
+    "backgroundColor": "#fff",
+    "enablePullDownRefresh": true
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#FDE60C",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "resource/img/home-off.png",
+        "selectedIconPath": "resource/img/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/buyCard/index",
+        "iconPath": "resource/img/buy-off.png",
+        "selectedIconPath": "resource/img/buy-on.png",
+        "text": "淘卡"
+      },
+      {
+        "pagePath": "pages/sellCard/index",
+        "iconPath": "resource/img/sell-off.png",
+        "selectedIconPath": "resource/img/sell-on.png",
+        "text": "转卡"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "resource/img/me-off.png",
+        "selectedIconPath": "resource/img/me-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  
+  "sitemapLocation": "sitemap.json"
+}

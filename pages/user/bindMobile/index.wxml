@@ -1,0 +1,15 @@
+<!--pages/user/bindMobile/index.wxml-->
+<view class="bindMobileWrap">
+  <view class="bindMobile">
+    <view class="bindMobile_header">已绑定手机号码</view>
+    <block wx:if="{{mobileList.length}}" >
+      <view class="list" wx:for="{{mobileList}}" wx:key="id">
+        <view class="list_child">{{item.telephone}}</view>
+      </view>
+    </block>
+    <view class="list_child" wx:else>暂无绑定手机号</view>
+    <view class="btnWrap">
+      <navigator class="btn" url="newMobile/index">新增手机号码</navigator>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,103 @@
+<!--pages/user/index.wxml-->
+<view class="container">
+	<view class="header">
+		<view class="pic">
+			<image class='pic-img' bindtap="imgYu" data-src="{{avatarUrl}}" src="{{avatarUrl?avatarUrl:'/resource/img/user_img.png'}}"></image>
+			<view class="pic-nameWrap">
+				<view class='pic-name'>{{nickName?nickName:""}}</view>
+			</view>
+		</view>
+		<view class="balance">￥{{amount}}</view>
+	</view>
+
+
+	<view class="grid">
+		<view class='grid-item-container'>
+			<block wx:for="{{iconImg}}" wx:key="index">
+				<!-- height:{{2*clientWidth/3}}px -->
+				<view class='grid-item-child' style="width:{{clientWidth}}px;" data-index="{{item.index}}" bindtap="gotoPach">
+					<view class="imgWrap">
+						<image class="img" src="{{item.img}}"></image>
+						<text class='grid-item-label'>{{item.name}}</text>
+					</view>
+				</view>
+			</block>
+		</view>
+
+		<!-- 砍单 -->
+		<view class="order">
+			<view class="order-header">我的砍单</view>
+			<view class="order-content bargainirg">
+				<navigator class="order-imgWrap" url="/pages/user/bargainIndent/index">
+					<image src="/resource/img/userImg/bargain.png"></image>
+					<text class="order-text">砍单</text>
+				</navigator>
+			</view>
+		</view>
+
+		<view class="order">
+			<view class="order-header">我的订单</view>
+			<view class="order-content">
+				<navigator class="order-imgWrap" url="/pages/user/orderForm/index?writeOffStatus=0">
+					<image src="/resource/img/userImg/stand-by.png"></image>
+					<text class="order-text">待使用</text>
+				</navigator>
+				<navigator class="order-imgWrap" url="/pages/user/orderForm/index?writeOffStatus=">
+					<image src="/resource/img/userImg/order.png"></image>
+					<text class="order-text">全部订单</text>
+				</navigator>
+			</view>
+		</view>
+
+		<view class="else-header">其他</view>
+		<view class='grid-item-container'>
+			<block wx:for="{{iconStyle}}" wx:key="index">
+				<view class='grid-item-child' style="width:{{clientWidth}}px;height:{{2*clientWidth/3}}px" data-id="{{item.index}}" bindtap="gotoPage">
+					<view class="imgWrap">
+						<image class="img" src="{{item.img}}"></image>
+						<text class='grid-item-label'>{{item.name}}</text>
+					</view>
+				</view>
+			</block>
+		</view>
+
+
+
+
+
+		<!-- <view class='grid-item-container'>
+      <block wx:for="{{iconStyle}}" wx:key="index">
+        <view class='grid-item-child' style="width:{{clientWidth}}rpx;height:{{clientWidth}}rpx" data-id="{{item.index}}" bindtap="gotoPage">
+          <view>
+            <icon class='grid-item-icon iconfont {{item.type}}' style="font-size:{{item.size}}rpx; color:{{item.color}}" />
+            <text class='grid-item-label'>{{item.name}}</text>
+          </view>
+        </view>
+      </block>
+    </view> -->
+
+
+	</view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <view  class='{{isShow}}'>
+  <view class='wxLogin'>
+    <view class='header'>
+      <image class='headerImage' src=''></image>
+    </view>
+    <text>帮你转</text>
+    <text class='wxLogin-text'>购买二手会员卡交易平台</text> 
+    <button class='bottom' open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="onGotUserInfo">授权登录</button>
+  </view>
+</view> -->

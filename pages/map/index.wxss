@@ -1,0 +1,7 @@
+/* pages/map/index.wxss */
+page{
+  width: 100%;
+}
+.mapWrap{
+  width: 100%;
+}

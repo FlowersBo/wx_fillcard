@@ -1,0 +1,108 @@
+<!--pages/index/index.wxml-->
+
+<view class="homeWrap">
+	<view class="home">
+
+		<view class="locatingWrap">
+			<view class="locating" catchtap="cityFun">
+				<icon class="iconfont icon-dizhi" />
+				<text>{{cityName}}</text>
+			</view>
+			<view class="searchWrap">
+				<navigator url="/pages/search/index" class="search">
+					<view class="search_inp">请输入商家名搜索</view>
+					<icon class="iconfont icon-fangdajing"></icon>
+				</navigator>
+			</view>
+		</view>
+
+		<view class="swiperList">
+			<swiper class="swiperList" indicatorDots="{{indicatorDots}}" indicator-color="#fafafa" indicator-active-color="#FDE50D" circular="{{circular}}" interval="{{interval}}" autoplay="{{autoplay}}" duration="{{duration}}">
+				<block wx:for="{{homeSwiper}}" wx:key="id">
+					<swiper-item bindtap="shopPurchase" data-linkUrl="{{item.linkUrl}}">
+						<image model="aspectFit" src="{{item.pic}}" class="slide-image" />
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+
+		<view class="tab">
+			<!-- {{index % 2 == 0?'categ':'tab-item'}} -->
+			<view class="tab-item" wx:for="{{classify}}" wx:key='index' style="width:{{screenWidth/4}}px;" data-navName="{{item.navName}}" data-linkPage="{{item.linkPage}}" bindtap="gotoClassify">
+				<image class="tab-img" src="{{item.pic}}"></image>
+				<view class="tab-text">{{item.navName}}</view>
+			</view>
+		</view>
+		<!-- 砍价 -->
+		<!-- <navigator class="gotoFaddishCardList" url="../bargainirg/index">
+      <image mode="widthFix" class="faddish-img" src="../../resource/img/hsh.jpg"></image>
+    </navigator> -->
+		<navigator wx:if="{{ad.ad0.pic}}" class="gotoFaddishCardList" url="{{ad.ad0.linkPage}}">
+			<image mode="widthFix" class="faddish-img" src="{{ad.ad0.pic}}"></image>
+		</navigator>
+		<!-- 一元购 -->
+		<navigator wx:if="{{ad.ad1.pic}}" class="gotoFaddishCardList" url="{{ad.ad1.linkPage}}">
+			<image mode="widthFix" class="faddish-img" src="{{ad.ad1.pic}}"></image>
+		</navigator>
+		<!-- 爆款 -->
+		<view class="cardList">
+			<view class="cards">
+				<view class="card-item" style="width:{{screenWidth/2}}px; height:{{screenWidth/2*1.5}}px;" wx:for="{{faddish}}" wx:key="index">
+					<view class="item" data-productId="{{item.productId}}" bindtap="faddishDetailFun">
+						<image class="card-img" mode="aspectFill" style="height:{{screenWidth/2-7}}px;" src="{{item.pic}}"></image>
+						<view style="height:{{screenWidth/2*1.5-screenWidth/2}}px;" class="card-content">
+							<view class="card-title">{{item.productName}}</view>
+							<view class="card-price">
+								<text>￥{{item.price}}</text>
+								<text>￥{{item.marketPrice}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<navigator wx:if="{{ad.ad2}}" class="gotoFaddishCardList" url="{{ad.ad2.linkPage}}">
+			<image mode="widthFix" class="faddish-img" src="{{ad.ad2.pic}}"></image>
+		</navigator>
+		<!-- 二手卡 -->
+		<view class="cardListsWrap">
+			<view class="cardLists">
+				<view class="cardList_head">
+					<view class="cardList_headText"></view>
+					<text>最新转卡信息</text>
+				</view>
+				<view class="cardss" wx:for="{{records}}" wx:key="id">
+					<view class="cardChild" data-memberCardId="{{item.memberCardId}}" bindtap="cardParticulars">
+						<image class="cardChild_img" src="{{item.pic?item.pic:'/resource/img/default.jpg'}}" mode="aspectFill"></image>
+						<view class="contentWrap">
+							<view class="shopName">{{item.merchantName}}</view>
+							<view class="caedTime">{{item.memberCardName}}</view>
+							<view class="transfer">
+								<view wx:if="{{item.cardType=='0'}}" class="transfer_card">剩余次数:{{item.surplusCount}}次</view>
+								<view wx:else class="transfer_card">剩余金额:
+									<text style="color:#F17841">{{item.surplusAmount}}元</text>
+								</view>
+								<view class="transfer_price">转让价:
+									<text style="color:#F17841">{{item.salePrice}}元</text>
+								</view>
+							</view>
+							<view wx:if="{{item.validity}}" class="periodValidity">有效期:{{item.validity}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<navigator wx:if="{{ad.ad3}}" class="gotoFaddishCardList" url="{{ad.ad3.linkPage}}">
+			<image mode="widthFix" class="faddish-img" src="{{ad.ad3.pic}}"></image>
+		</navigator>
+
+		<!-- <view class="loadmore" hidden='{{!showThis}}' bindtap='clickLoadMore'>
+      <image class="icon active" src='/resource/img/loading.png' hidden='{{!showIcon}}' />
+      <text>{{text}}</text>
+    </view> -->
+
+	</view>
+</view>
+<view class="likes" wx:if="{{isAuthor==false}}">
+	<isAuthor bind:flagEvent="likesClick" bind:offBtn="offBtn"></isAuthor>
+</view>

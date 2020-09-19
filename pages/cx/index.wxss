@@ -1,0 +1,18 @@
+/* pages/cx/index.wxss */
+/*!
+ * weui.js v1.1.0 (https://github.com/weui/weui-wxss)
+ * Copyright 2016, wechat ui team
+ * MIT license
+ */
+ /* @import '/utils/iconfont.wxss'; */
+ @import '../../utils/iconfont.wxss';
+ .q-quill /deep/ .ql-toolbar.ql-snow + .ql-container.ql-snow {
+  height: 32vh;
+}
+
+.q-quill /deep/ .ql-toolbar.ql-snow + .ql-container.ql-snow {
+  height: 32vh;
+}
+ 
+
+

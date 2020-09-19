@@ -1,0 +1,28 @@
+<!--pages/payment/index.wxml-->
+<view class="paymentWrap">
+  <view class="payment">
+    <view class="payment_text">支付金额</view>
+    <view class="payment_sum">
+      <text class="money">￥</text>{{salePrice}}</view>
+    <view class="payment_text">商品:{{memberCardName}}</view>
+    <view class="payment_text">收款方:{{merchantName}}</view>
+    <view class="wxPay">
+      <view class="pay_text">
+        <icon class="iconfont icon-wechat-pay-fill"></icon>
+        <text>微信支付</text>
+      </view>
+      <view class="dj">
+        <icon class="iconfont icon-duigou1"></icon>
+      </view>
+    </view>
+    <view class="liabilityWrap">
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox">
+          <checkbox value="1" checked="{{checked}}" />
+        </label>
+      </checkbox-group>
+      <view class="liability" bindtap="liabilityFun">服务协议</view>
+    </view>
+  </view>
+  <button class="btn" bindtap="saveFormId" disabled="{{disabled}}">确认支付</button>
+</view>
