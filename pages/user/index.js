@@ -10,8 +10,7 @@ Page({
     amount: '', //余额
     // isShow: "showNone",
     // isNo1: "container",
-    iconImg: [
-      {
+    iconImg: [{
         "index": "0",
         "img": "/resource/img/userImg/detail.png",
         "name": "消费明细"
@@ -27,8 +26,7 @@ Page({
         "name": "在售会员卡"
       },
     ],
-    iconStyle: [
-      {
+    iconStyle: [{
         "index": "0",
         "img": "/resource/img/userImg/backCrad.png",
         "name": "绑定银行卡"
@@ -53,22 +51,22 @@ Page({
         "img": "/resource/img/userImg/service.png",
         "name": "联系客服"
       },
-      {
-        "index": "5",
-        "img": "/resource/img/userImg/generalize.png",
-        "name": "推广赚钱"
-      }
+      // {
+      //   "index": "5",
+      //   "img": "/resource/img/userImg/generalize.png",
+      //   "name": "推广赚钱"
+      // }
     ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     that = this;
     var query = wx.createSelectorQuery();
-    query.select('.grid-item-container').boundingClientRect(function(rect) {
-      console.log(rect.width) 
+    query.select('.grid-item-container').boundingClientRect(function (rect) {
+      console.log(rect.width)
       that.setData({
         clientWidth: rect.width / 3
       })
@@ -88,14 +86,14 @@ Page({
   },
 
 
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     var token = wx.getStorageSync('token');
     var userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
@@ -130,15 +128,21 @@ Page({
           });
         }
       })
-    } else {
+    }
+    // else {
+    //   wx.navigateTo({
+    //     url: '/pages/wxlogin/index',
+    //   })
+    // }
+  },
+
+  //九宫格跳转页面
+  gotoPach(e) {
+    if (!this.data.telephone) {
       wx.navigateTo({
         url: '/pages/wxlogin/index',
       })
     }
-  },
-
-  //九宫格跳转页面
-  gotoPach(e){
     console.log(e.currentTarget.dataset.index);
     var index = e.currentTarget.dataset.index;
     if (index == 0) {
@@ -156,7 +160,29 @@ Page({
     }
   },
 
+  bindorder(e){
+    if (!this.data.telephone) {
+      wx.navigateTo({
+        url: '/pages/wxlogin/index',
+      })
+    }
+    let writeOffStatus = '';
+    if(e.currentTarget.dataset.id==1){
+      writeOffStatus = 0
+    }else{
+      writeOffStatus = ''
+    }
+    wx.navigateTo({
+      url: 'orderForm/index?writeOffStatus=' + writeOffStatus,
+    })
+  },
+
   gotoPage(e) {
+    if (!this.data.telephone) {
+      wx.navigateTo({
+        url: '/pages/wxlogin/index',
+      })
+    }
     console.log(e.currentTarget.dataset.id);
     var index = e.currentTarget.dataset.id;
     if (index == 0) {
@@ -215,7 +241,7 @@ Page({
                           })
                         }
                       })
-                      .catch(function(res) {
+                      .catch(function (res) {
                         wx.showToast({
                           title: res.error,
                           icon: 'none',
@@ -236,7 +262,7 @@ Page({
               })
             }
           })
-          .catch(function(res) {
+          .catch(function (res) {
             wx.showToast({
               title: res.error,
               icon: 'none',
@@ -282,7 +308,7 @@ Page({
   },
 
   //图片点击事件
-  imgYu: function(event) {
+  imgYu: function (event) {
     var src = event.currentTarget.dataset.src;
     var imgList = [];
     imgList.push(src);
@@ -297,17 +323,17 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {},
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {},
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     console.log("下拉刷新")
     // 显示顶部刷新图标  
     wx.showNavigationBarLoading();
@@ -323,14 +349,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 })

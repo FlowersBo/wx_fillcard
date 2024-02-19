@@ -30,9 +30,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     that = this;
-    console.log('屏宽度',that.data.screenWidth);
+    console.log('屏宽度', that.data.screenWidth);
     wx.setStorageSync('city', '110000');
     wx.setStorageSync('cityName', '北京市');
     var isAuthor = wx.getStorageSync('isAuthor');
@@ -52,7 +52,10 @@ Page({
     });
     //二次登录
     wxLogin().then(res => {
-      console.log('二次确认登录', res)
+      that.homeSwiper();
+      that.classifyFun();
+      that.faddishFun();
+      that.cardList();
     })
   },
 
@@ -77,17 +80,13 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    that.homeSwiper();
-    that.classifyFun();
-    that.faddishFun();
-    that.cardList();
+  onShow: function () {
     let cityName = wx.getStorageSync('cityName');
     that.setData({
       cityName: cityName
@@ -139,7 +138,7 @@ Page({
   loadInfo() {
     wx.getLocation({
       type: 'gcj02',
-      success: function(res) {
+      success: function (res) {
         var latitude = res.latitude //维度
         var longitude = res.longitude //经度
         console.log(latitude, longitude);
@@ -150,16 +149,16 @@ Page({
             latitude: latitude,
             longitude: longitude
           },
-          success: function(res) {
+          success: function (res) {
             var city = res.result.address_component.city;
             console.log('城市', city);
             wx.setStorageSync('locationCity', city);
             that.cityFunction(city);
           },
-          fail: function(res) {
+          fail: function (res) {
             console.log(res);
           },
-          complete: function(res) {
+          complete: function (res) {
             // console.log(res);
           }
         });
@@ -167,12 +166,12 @@ Page({
     })
   },
   //获取城市
-  cityFunction: function(city) {
+  cityFunction: function (city) {
     console.log(city)
     var dataUrl = '/communal/config/openCityList';
     var param = {};
     wxRequest(dataUrl, param)
-      .then(function(res) {
+      .then(function (res) {
         //业务逻辑
         console.log("城市返回", res);
         if (res.code == "0000") {
@@ -200,7 +199,7 @@ Page({
           })
         }
       })
-      .catch(function(res) {
+      .catch(function (res) {
         console.log(res);
         wx.showToast({
           title: res.error,
@@ -210,7 +209,7 @@ Page({
         return false
       })
   },
- 
+
 
   //轮播列表
   homeSwiper() {
@@ -218,7 +217,7 @@ Page({
     var param = {};
     wxRequest(dataUrl, param).then(res => {
       console.log("轮播图", res);
-      if(res.code=='0000'){
+      if (res.code == '0000') {
         var homeSwiper = res.data;
         that.setData({
           homeSwiper: homeSwiper
@@ -233,7 +232,7 @@ Page({
     });
   },
   //轮播跳转
-  shopPurchase: function(e) {
+  shopPurchase: function (e) {
     console.log('轮播', e);
     var linkUrl = e.currentTarget.dataset.linkurl;
     if (linkUrl) {
@@ -244,7 +243,7 @@ Page({
   },
 
   //分类
-  classifyFun:function(){
+  classifyFun: function () {
     var dataUrl = "/market/marketData";
     var param = {};
     wxRequest(dataUrl, param).then(res => {
@@ -254,7 +253,7 @@ Page({
         var ad = res.data.ad;
         that.setData({
           classify: classify,
-          ad:ad
+          ad: ad
         });
       } else {
         wx.showToast({
@@ -266,8 +265,8 @@ Page({
     });
   },
   //分类跳转
-  gotoClassify:function(e){
-    console.log('分类跳转',e);
+  gotoClassify: function (e) {
+    console.log('分类跳转', e);
     var linkPage = e.currentTarget.dataset.linkpage;
     var navName = e.currentTarget.dataset.navname;
     console.log('分类跳转路径', linkPage);
@@ -276,7 +275,7 @@ Page({
     })
   },
   //城市选择
-  cityFun: function() {
+  cityFun: function () {
     wx.navigateTo({
       url: 'cityList/index',
     })
@@ -319,7 +318,7 @@ Page({
   },
 
   //二手卡列表
-  cardList: function() {
+  cardList: function () {
     var dataUrl = "/card/resellList";
     var param = {
       page: {
@@ -335,7 +334,7 @@ Page({
           records: records,
           current: 1
         });
-      }else{
+      } else {
         wx.showToast({
           title: res.msg,
           icon: 'none',
@@ -345,7 +344,7 @@ Page({
     });
   },
   //二手卡详情跳转
-  cardParticulars: function(e) {
+  cardParticulars: function (e) {
     console.log(e);
     var memberCardId = e.currentTarget.dataset.membercardid;
     wx.navigateTo({
@@ -355,21 +354,21 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     console.log("下拉刷新")
     // 显示顶部刷新图标  
     wx.showNavigationBarLoading();
@@ -389,7 +388,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     // 页数+1  
     let current = that.data.current;
     current = current + 1;
@@ -409,7 +408,7 @@ Page({
         wx.showLoading({
           title: '暂时没有更多了',
         })
-        setTimeout(function() {
+        setTimeout(function () {
           wx.hideLoading()
         }, 500)
       } else {
@@ -429,10 +428,10 @@ Page({
             current: current
           })
           // 隐藏加载框  
-          setTimeout(function() {
+          setTimeout(function () {
             wx.hideLoading()
           }, 500)
-        }else{
+        } else {
           wx.showToast({
             title: res.msg,
             icon: 'none',
@@ -465,7 +464,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

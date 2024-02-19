@@ -100,8 +100,8 @@ Page({
                         icon: 'none',
                         duration: 1000
                       })
-                      wx.switchTab({
-                        url: '/pages/index/index'
+                      wx.navigateBack({
+                        delta: 1
                       })
                     }
                   })
@@ -138,8 +138,11 @@ Page({
               delta: 1
             })
           } else {
-            wx.switchTab({
-              url: '/pages/index/index'
+            // wx.switchTab({
+            //   url: '/pages/index/index'
+            // })
+            wx.navigateBack({
+              delta: 1
             })
           }
         }
