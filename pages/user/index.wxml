@@ -36,7 +36,7 @@
 		</view> -->
 
 		<view class="order">
-			<view class="order-header">我的订单</view>
+			<view class="order-header">我的商品</view>
 			<view class="order-content">
 				<view class="order-imgWrap" data-id="1" bindtap="bindorder">
 					<image src="/resource/img/userImg/stand-by.png"></image>
@@ -44,7 +44,7 @@
 				</view>
 				<view class="order-imgWrap" data-id="2" bindtap="bindorder">
 					<image src="/resource/img/userImg/order.png"></image>
-					<text class="order-text">全部订单</text>
+					<text class="order-text">全部</text>
 				</view>
 			</view>
 		</view>
